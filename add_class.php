@@ -1,4 +1,6 @@
-<?php include('header.php'); ?>
+<?php 
+$tipe='normal';
+include('header.php'); ?>
 <?php include('session.php'); ?>
     <body>
 		<?php include('navbar.php'); ?>
