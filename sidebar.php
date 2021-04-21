@@ -3,13 +3,13 @@
 	<center>
 		<img src="images/logo.png">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-						<li ><a href="dashboard.php"><i class="icon-chevron-right icon-large"></i><i class="icon-home icon-large"></i> Statistics</a></li>
-						<li ><a href="students.php"><i class="icon-chevron-right icon-large"></i><i class="icon-group icon-large"></i> Students</a></li>
-						<li class="active"><a href="add_class.php"><i class="icon-chevron-right icon-large"></i><i class="icon-th-list icon-large"></i> Class</a></li>
-						<li ><a href="fees.php"><i class="icon-chevron-right icon-large"></i><i class="icon-money icon-large"></i> Fees Payment</a></li>
-						<li><a href="payment_report.php"><i class="icon-chevron-right icon-large"></i><i class="icon-table icon-large"></i> Payment Report</a></li>
-						<li  ><a href="users.php"><i class="icon-chevron-right icon-large"></i><i class="icon-group icon-large"></i> Users</a></li>
-						<li><a href="student_report.php"><i class="icon-chevron-right icon-large"></i><i class="icon-file icon-large"></i> Reports</a></li>
+						<li <?php if($page == 'Dashboard') echo 'class="active"';?>><a href="dashboard.php"><i class="icon-chevron-right icon-large"></i><i class="icon-home icon-large"></i> Statistik</a></li>
+						<li <?php if($page == 'Siswa') echo 'class="active"';?>><a href="students.php"><i class="icon-chevron-right icon-large"></i><i class="icon-group icon-large"></i> Siswa</a></li>
+						<li <?php if($page == 'Kelas') echo 'class="active"';?>><a href="add_class.php"><i class="icon-chevron-right icon-large"></i><i class="icon-th-list icon-large"></i> Kelas</a></li>
+						<li <?php if($page == 'Bayar') echo 'class="active"';?>><a href="fees.php"><i class="icon-chevron-right icon-large"></i><i class="icon-money icon-large"></i> Pembayaran</a></li>
+						<li <?php if($page == 'Lap_Bayar') echo 'class="active"';?>><a href="payment_report.php"><i class="icon-chevron-right icon-large"></i><i class="icon-table icon-large"></i> Laporan Pembayaran</a></li>
+						<li <?php if($page == 'Pengguna') echo 'class="active"';?>><a href="users.php"><i class="icon-chevron-right icon-large"></i><i class="icon-group icon-large"></i> Pengguna</a></li>
+						<li><a href="student_report.php"><i class="icon-chevron-right icon-large"></i><i class="icon-file icon-large"></i> Laporan</a></li>
                     </ul>
 	</center>
             </div>

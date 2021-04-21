@@ -6,7 +6,9 @@ include('header.php'); ?>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_add_class.php'); ?>
+				<?php 
+				$page = "Kelas";
+				include('sidebar.php'); ?>
 				<div class="span3" id="">
 				<?php  include('add_class1.php');?>
 				</div>

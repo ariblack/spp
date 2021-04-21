@@ -11,7 +11,9 @@ $mycriteria = $_POST['criteria'];
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_pay_report.php'); ?>
+				<?php 
+                $page = 'Lap_Bayar';
+                include('sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->

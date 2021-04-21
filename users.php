@@ -6,7 +6,9 @@ include('header.php'); ?>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_users.php'); ?>
+				<?php 
+				$page = 'Pengguna';
+				include('sidebar.php'); ?>
 				<div class="span3" id="">
 				<?php  include('add_user.php');  ?>		   			
 				</div>
