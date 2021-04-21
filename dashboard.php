@@ -8,7 +8,8 @@
         ?>
         <div class="container-fluid" id="">
             <div class="row-fluid">
-					<?php 
+					<?php
+                    $jenis='Normal'; 
                     $page = 'Dashboard';
                     include('sidebar.php'); ?>
                 <!--/span-->

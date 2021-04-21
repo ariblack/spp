@@ -6,7 +6,8 @@ include('header.php'); ?>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php 
+				<?php
+				$jenis='Normal'; 
 				$page = "Kelas";
 				include('sidebar.php'); ?>
 				<div class="span3" id="">

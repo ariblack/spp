@@ -6,9 +6,10 @@ include('header.php'); ?>
 		<?php include('navbar.php') ?>
         <div class="container-fluid" id="">
             <div class="row-fluid">
-					<?php 
+					<?php
+                    $jenis='Laporan'; 
                     $page='Ringkasan';
-                    include('report_sidebar.php'); ?>
+                    include('sidebar.php'); ?>
                 <!--/span-->
                 <div class="span9" id="content">
 						<div class="row-fluid"></div>
