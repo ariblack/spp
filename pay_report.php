@@ -6,11 +6,7 @@ include('header.php'); ?>
 $myperiod = $_POST['period'];
 $myclass = $_POST['class'];
 $mycriteria = $_POST['criteria'];
-
-
-
 ?>
-
     <body >
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
