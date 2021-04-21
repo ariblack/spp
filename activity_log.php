@@ -6,7 +6,9 @@ include('header.php'); ?>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_activity_log.php'); ?>
+				<?php 
+				$page='Log';
+				include('report_sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->

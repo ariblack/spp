@@ -2,12 +2,13 @@
 $tipe='normal';
 include('header.php'); ?>
 <?php include('session.php'); ?>
-
     <body >
 		<?php include('navbar.php') ?>
         <div class="container-fluid" id="">
             <div class="row-fluid">
-					<?php include('report_sidebar_summary.php'); ?>
+					<?php 
+                    $page='Ringkasan';
+                    include('report_sidebar.php'); ?>
                 <!--/span-->
                 <div class="span9" id="content">
 						<div class="row-fluid"></div>
