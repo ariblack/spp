@@ -2,7 +2,7 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><i class="icon-plus-sign icon-large"></i> Add User</div>
+                                <div class="muted pull-left"><i class="icon-plus-sign icon-large"></i> Tambah Pengguna</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
@@ -10,7 +10,7 @@
 										<div class="control-group">
                                           <div class="controls">
 										  <label>Status</label>
-										  <select name="status" placeholder = "Category">
+										  <select name="status" placeholder = "Kategori">
 												<option></option>
 												<option value ="administrator">Administrator</option>
 												<option value ="normal">Normal</option>
@@ -21,22 +21,14 @@
 										 
 										<div class="control-group">
                                           <div class="controls">
-										  <label>First Name</label>
-                                           <input class="input focused"  name="fname" id="focusedInput" type="text" placeholder = "First Name" required>
+										  <label>Nama</label>
+                                           <input class="input focused"  name="name" id="focusedInput" type="text" placeholder = "Nama" required>
                                           </div>
                                         </div>
 										
 											<div class="control-group">
                                           <div class="controls">
-										  <label>Last Name</label>
-                                            <input class="input focused"  name="lname" id="focusedInput" type="text" placeholder = "Last Name" required>
-                                          </div>
-                                        </div>
-										
-
-											<div class="control-group">
-                                          <div class="controls">
-												<button  data-placement="right" title="Click to Save" id="save" name="save" class="btn btn-inverse"><i class="icon-save icon-large"></i> Save</button>
+												<button  data-placement="right" title="Click to Save" id="save" name="save" class="btn btn-inverse"><i class="icon-save icon-large"></i> Simpan</button>
 														<script type="text/javascript">
 														$(document).ready(function(){
 															$('#save').tooltip('show');
@@ -62,7 +54,7 @@
 						url: "save_user.php",
 						data: formData,
 						success: function(html){
-							$.jGrowl("Class Successfully  Added", { header: 'User Added' });
+							$.jGrowl("Pengguna telah berhasil ditambah", { header: 'Pengguna ditambahkan' });
 							window.location = 'users.php';  
 						}
 					});
