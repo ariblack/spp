@@ -19,7 +19,7 @@
 						
 						?>
                             <li class="dropdown">
-                                <a href="#" id="name123" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user icon-large"></i><?php echo $row['name'];  ?> <i class="caret"></i></a>
+                                <a href="#" id="name123" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user icon-large"></i><?php echo $row['firstname']." ".$row['lastname'];  ?><i class="caret"></i></a>
                                 <ul class="dropdown-menu">
 									<!--  <li><a class="jkl" tabindex="-1" href="#">Profile</a></li> -->
 									<li>

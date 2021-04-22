@@ -1,9 +1,9 @@
    <div class="row-fluid">
-       <a href="class.php" class="btn btn-info"><i class="icon-plus-sign icon-large"></i> Edit Pengguna</a>
+       <a href="class.php" class="btn btn-info"><i class="icon-plus-sign icon-large"></i> Edit User</a>
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Edit Pengguna </div>
+                                <div class="muted pull-left">Edit User </div>
                             </div>
 							<?php
 							$query = mysqli_query($conn,"select * from users where user_id = '$get_id'")or die(mysqli_error());
@@ -15,7 +15,7 @@
 										<div class="control-group">
                                           <div class="controls">
 										  <label>Status</label>
-										  <select name="status" placeholder = "Kategori">
+										  <select name="status" placeholder = "Category">
 												<option><?php echo $row['status'];?></option>
 												<option value ="administrator">Administrator</option>
 												<option value ="normal">Normal</option>
@@ -27,9 +27,16 @@
 								
 										<div class="control-group">
                                           <div class="controls">
-                                            <input name="name" value="<?php echo $row['name']; ?>" class="input focused" id="focusedInput" type="text" required>
+                                            <input name="fname" value="<?php echo $row['firstname']; ?>" class="input focused" id="focusedInput" type="text" required>
                                           </div>
                                         </div>
+										
+										<div class="control-group">
+                                          <div class="controls">
+                                            <input name="lname" value="<?php echo $row['lastname']; ?>" class="input focused" id="focusedInput" type="text" required>
+                                          </div>
+                                        </div>
+										
 									
 											<div class="control-group">
                                           <div class="controls">
@@ -45,10 +52,11 @@
                     </div><?php
 if (isset($_POST['update'])){
 $status= $_POST['status'];
-$fname = $_POST['name'];
-$uname = $fname;
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$uname = $fname.'.'.$lname;
 
-mysqli_query($conn,"update users set username = '$uname',name ='$name',status='$status' where user_id = '$get_id' ")or die(mysqli_error());
+mysqli_query($conn,"update users set username = '$uname',firstname ='$fname', lastname='$lname',status='$status' where user_id = '$get_id' ")or die(mysqli_error());
 ?>
 
 <script>
