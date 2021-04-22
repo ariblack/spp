@@ -22,16 +22,16 @@
 							$query = mysqli_query($conn,"select * from users")or die(mysqli_error());
 							$count = mysqli_num_rows($query);
 							?>
-                                <div class="muted pull-left"><i class="icon-reorder icon-large"></i> Users List</div>
+                                <div class="muted pull-left"><i class="icon-reorder icon-large"></i> Daftar Pengguna</div>
                                 <div class="muted pull-right">
-									Number of Users: <span class="badge badge-info"><?php echo $count; ?></span>
+									Jumlah Pengguna : <span class="badge badge-info"><?php echo $count; ?></span>
 								</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
 								<form action="delete_user.php" method="post">
   									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
-									<a data-placement="right" title="Click to Delete check item" data-toggle="modal" href="#user_delete" id="delete"  class="btn btn-danger" name=""><i class="icon-trash icon-large"></i> Delete</a>
+									<a data-placement="right" title="Click untuk Menghaous item yang di Centang" data-toggle="modal" href="#user_delete" id="delete"  class="btn btn-danger" name=""><i class="icon-trash icon-large"></i> Hapus</a>
 														<script type="text/javascript">
 														$(document).ready(function(){
 															$('#delete').tooltip('show');
@@ -42,8 +42,8 @@
 										<thead>
 										  <tr>
 												<th></th>
-												<th>Username</th>
-												<th>Full Name</th>
+												<th>Nama Pengguna</th>
+												<th>Nama</th>
 												<th>Status</th>
 												<th></th>
 										   </tr>
@@ -62,7 +62,7 @@
 												<td><?php echo $row['firstname'].' '.$row['lastname']; ?></td>
 												<td><?php echo $row['status']; ?></td>
 												<td width="80">
-												<a data-placement="left" id="edit<?php echo $id; ?>" title="Click to Edit" href="edit_user.php<?php echo '?id='.$id; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i> Edit</a>
+												<a data-placement="left" id="edit<?php echo $id; ?>" title="Click untuk Edit" href="edit_user.php<?php echo '?id='.$id; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i> Edit</a>
 														<script type="text/javascript">
 														$(document).ready(function(){
 															$('#edit<?php echo $id; ?>').tooltip('show');

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Apr 2021 pada 03.41
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.2.33
+-- Waktu pembuatan: 22 Apr 2021 pada 06.11
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,11 +47,12 @@ INSERT INTO `activity_log` (`activity_log_id`, `username`, `date`, `action`) VAL
 (4, 'noel.titus', '2016-10-24 09:15:36', 'Updated Student aaa bbb'),
 (5, 'noel.titus', '2016-10-24 09:17:50', 'Add Student buel bol'),
 (6, 'noel.titus', '2016-10-24 09:23:17', 'Add User abdul.hemedy'),
-(7, 'noel.titus', '2021-04-19 15:28:10', 'Add Student Ariono Ariono'),
-(8, 'noel.titus', '2021-04-19 15:29:24', 'Add Class Kelas 12'),
-(9, 'noel.titus', '2021-04-19 15:29:39', 'Updated Student Ariono Ariono'),
-(10, 'noel.titus', '2021-04-19 15:30:12', 'Updated Student Ariono Ariono'),
-(11, 'noel.titus', '2021-04-21 15:27:22', 'Add User Ari');
+(7, 'noel.titus', '2021-04-22 09:43:54', 'Add User Ariono.Ariono'),
+(8, 'noel.titus', '2021-04-22 09:57:03', 'Deleted  user Ariono.Ariono'),
+(9, 'noel.titus', '2021-04-22 10:09:55', 'Add User Ariono.Ariono'),
+(10, 'noel.titus', '2021-04-22 10:57:47', 'Add Student Ariono Ariono'),
+(11, 'noel.titus', '2021-04-22 10:58:00', 'Deleted Student Ariono Ariono'),
+(12, 'noel.titus', '2021-04-22 11:03:08', 'Deleted  user Ariono.Ariono');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,7 @@ CREATE TABLE `aprjun` (
 INSERT INTO `aprjun` (`aprjun_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 250000),
-(3, 3, 'Form 6', 250000, 'quarter', 112500, 0);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -97,8 +99,7 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`class_id`, `class_name`, `category`, `fee`) VALUES
-(1, 'Form 6', 'Secondary', 250000),
-(2, 'Kelas 12', 'Secondary', 450000);
+(1, 'Form 6', 'Secondary', 250000);
 
 -- --------------------------------------------------------
 
@@ -124,7 +125,7 @@ CREATE TABLE `janmar` (
 INSERT INTO `janmar` (`janmar_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 250000),
-(3, 3, 'Form 6', 250000, 'quarter', 112500, 112500);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,7 @@ CREATE TABLE `julsep` (
 INSERT INTO `julsep` (`julsep_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 0),
-(3, 3, 'Form 6', 250000, 'quarter', 112500, 0);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -176,7 +177,7 @@ CREATE TABLE `octdec` (
 INSERT INTO `octdec` (`octdec_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 0),
-(3, 3, 'Form 6', 250000, 'quarter', 112500, 0);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -200,8 +201,7 @@ CREATE TABLE `payment_made` (
 
 INSERT INTO `payment_made` (`pay_id`, `student_id`, `period`, `amount`, `date_of_payment`, `receipt`) VALUES
 (1, 2, 'janmar', 250000, '2016-10-24', 23444),
-(2, 2, 'aprjun', 250000, '2016-10-24', 90909887),
-(3, 3, 'janmar', 112500, '2021-04-19', 25556);
+(2, 2, 'aprjun', 250000, '2016-10-24', 90909887);
 
 -- --------------------------------------------------------
 
@@ -235,8 +235,7 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`student_id`, `firstname`, `middlename`, `lastname`, `gender`, `dob`, `address`, `class`, `gfirstname`, `gmiddlename`, `glastname`, `rship`, `tel`, `status`, `transport`, `route`) VALUES
 (1, 'aaa', 'bbb', 'cvvv', 'Male', '2016-10-25', 'bububu', 'Form 6', 'oplkk', 'jjj', 'rfrf', 'father', '0789554433', 'half', 'yes', 'kijichi'),
-(2, 'buel', 'bol', 'buel', 'Female', '2016-10-26', 'stonetown', 'Form 6', 'bun', 'bol', 'buel', 'mother', '0717884452', 'paying', 'no', ''),
-(3, 'Ariono', 'Ariono', 'Ariono', 'Male', '2000-02-10', 'Kenjeran 120 Surabaya', 'Kelas 12', 'Supri', 'Supri', 'Supri', 'Parent', '3434234234', 'quarter', 'yes', 'Kenjeran');
+(2, 'buel', 'bol', 'buel', 'Female', '2016-10-26', 'stonetown', 'Form 6', 'bun', 'bol', 'buel', 'mother', '0717884452', 'paying', 'no', '');
 
 -- --------------------------------------------------------
 
@@ -249,7 +248,8 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -257,10 +257,9 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`, `name`, `status`) VALUES
-(3, 'noel.titus', '54321', 'noel titus', 'administrator'),
-(4, 'abdul.hemedy', '12345', 'abdul hemedy', 'normal'),
-(5, 'Ari', '12345', '', 'administrator');
+INSERT INTO `users` (`user_id`, `username`, `password`, `firstname`, `lastname`, `status`) VALUES
+(3, 'noel.titus', '54321', 'noel', 'titus', 'Administrator'),
+(4, 'abdul.hemedy', '12345', 'abdul', 'hemedy', 'Normal');
 
 -- --------------------------------------------------------
 
@@ -282,19 +281,11 @@ CREATE TABLE `user_log` (
 --
 
 INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, `user_id`) VALUES
-(1, 'noel.titus', '2016-10-24 09:10:07', '2021-04-21 15:07:37', 3),
-(2, 'noel.titus', '2016-10-24 09:11:10', '2021-04-21 15:07:37', 3),
-(3, 'noel.titus', '2016-10-24 09:23:04', '2021-04-21 15:07:37', 3),
+(1, 'noel.titus', '2016-10-24 09:10:07', '2021-04-22 11:03:15', 3),
+(2, 'noel.titus', '2016-10-24 09:11:10', '2021-04-22 11:03:15', 3),
+(3, 'noel.titus', '2016-10-24 09:23:04', '2021-04-22 11:03:15', 3),
 (4, 'abdul.hemedy', '2016-10-24 09:23:30', '2016-10-24 09:36:55', 4),
-(5, 'noel.titus', '2021-04-06 12:12:03', '2021-04-21 15:07:37', 3),
-(6, 'noel.titus', '2021-04-06 15:42:17', '2021-04-21 15:07:37', 3),
-(7, 'noel.titus', '2021-04-09 17:19:38', '2021-04-21 15:07:37', 3),
-(8, 'abdul.hemedy', '2021-04-09 17:20:01', '', 4),
-(9, 'noel.titus', '2021-04-19 15:24:53', '2021-04-21 15:07:37', 3),
-(10, 'noel.titus', '2021-04-21 13:56:37', '2021-04-21 15:07:37', 3),
-(11, 'noel.titus', '2021-04-21 14:35:40', '2021-04-21 15:07:37', 3),
-(12, 'noel.titus', '2021-04-21 14:58:22', '2021-04-21 15:07:37', 3),
-(13, 'noel.titus', '2021-04-21 15:07:45', '', 3);
+(5, 'noel.titus', '2021-04-22 09:16:48', '2021-04-22 11:03:15', 3);
 
 --
 -- Indexes for dumped tables
@@ -368,7 +359,7 @@ ALTER TABLE `user_log`
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `aprjun`
@@ -380,7 +371,7 @@ ALTER TABLE `aprjun`
 -- AUTO_INCREMENT untuk tabel `class`
 --
 ALTER TABLE `class`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `janmar`
@@ -404,7 +395,7 @@ ALTER TABLE `octdec`
 -- AUTO_INCREMENT untuk tabel `payment_made`
 --
 ALTER TABLE `payment_made`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `students`
@@ -416,13 +407,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

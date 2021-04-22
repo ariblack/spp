@@ -1,9 +1,8 @@
    <div class="row-fluid">
-       <a href="class.php" class="btn btn-info"><i class="icon-plus-sign icon-large"></i> Edit User</a>
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Edit User </div>
+                                <div class="muted pull-left"><i class="icon-pencil icon-large"></i> Edit User </div>
                             </div>
 							<?php
 							$query = mysqli_query($conn,"select * from users where user_id = '$get_id'")or die(mysqli_error());
@@ -15,10 +14,9 @@
 										<div class="control-group">
                                           <div class="controls">
 										  <label>Status</label>
-										  <select name="status" placeholder = "Category">
-												<option><?php echo $row['status'];?></option>
-												<option value ="administrator">Administrator</option>
-												<option value ="normal">Normal</option>
+										  <select name="status" placeholder = "Status">
+												<option value ="Administrator" <?php if($row['status']=='Administrator') echo 'selected="selected"';?>>Administrator</option>
+												<option value ="Normal" <?php if($row['status']=='Normal') echo 'selected="selected"';?>>Normal</option>
 											</select>
                                             
                                           </div>
