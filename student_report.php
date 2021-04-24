@@ -1,10 +1,15 @@
-<?php include('header.php'); ?>
+<?php 
+$tipe='normal';
+include('header.php'); ?>
 <?php include('session.php'); ?>
     <body >
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('report_sidebar_students.php'); ?>
+				<?php
+                $jenis='Laporan'; 
+                $page='Siswa';
+                include('sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->
@@ -17,7 +22,7 @@
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left"><i class="icon-reorder icon-large"></i> Students List</div>
                                 <div class="muted pull-right">
-									Number of Students: <span class="badge badge-info"><?php  echo $count;  ?></span>
+									Number of Students: <span class="badge badge-info"><?php echo $count;?></span>
 								</div>
                             </div>
                             <div class="block-content collapse in">

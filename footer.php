@@ -1,7 +1,6 @@
 <center>
 <hr>
-
-		<footer>
-           <p>All Rights Reserved 2016 </p>
+        <footer>
+           <p>&#9400; SKEMBA-SIAP 2021. All Rights Reserved</p>
         <footer>
 </center>

@@ -1,18 +1,47 @@
 <?php include('header.php'); ?>
   <body id="login">
     <div class="container">
-	<?php include('navbar_index.php'); ?>
+	<?php 
+		$tipe='index';
+		include('navbar.php'); 
+	?>
 	<img src="images/ban.png" class="img-polaroid">
     <form id="login_form" class="form-signin" method="post">
-        <h3 class="form-signin-heading"><i class="icon-lock"></i> Please Login</h3>
-        <input type="text" class="input-block-level" id="usernmae" name="username" placeholder="Username" required>
-        <input type="password" class="input-block-level" id="password" name="password" placeholder="Password" required>
-        <button data-placement="top" title="Click to Login" id="login1" name="login" class="btn btn-success" type="submit"><i class="icon-signin icon-large"></i> Sign in</button>
+        <h3 class="form-signin-heading"><i class="icon-lock"></i> Silahkan Masuk</h3>
+        <input type="text" class="input-block-level" id="username" name="username" placeholder="Nama Pengguna" required>
+        <table>
+		<tr>
+		<td>
+		<input type="password" class="input-block-level" id="password" name="password" placeholder="Kata Sandi" required>
+		</td>
+		<td style="vertical-align:center">
+		<!-- An element to toggle between password visibility -->
+		<div id="tombol">
+		<a href="#" id="tampil" name="tampil" onclick="myFunction()" class="icon-eye-open icon-large" style="cursor:pointer"></a>
+		</div>
+		
+		<!-- <i></i></a> -->
+		</td></tr>
+		</table>
+        <button data-placement="top" title="Click untuk Login" id="login1" name="login" class="btn btn-success" type="submit"><i class="icon-signin icon-large"></i> Masuk</button>
 		                            <script type="text/javascript">
 										$(document).ready(function(){
 											$('#login1').tooltip('show');
 											$('#login1').tooltip('hide');
+
 										});
+
+										function myFunction() {
+  											var x = document.getElementById("password");
+  											
+											if (x.type === "password") {
+    											x.type = "text";
+												$("#tombol").html("<a href='#' id='tampil' name='tampil' onclick='myFunction()' class='icon-eye-close icon-large' style='cursor:pointer'></a>");
+											} else {
+    											x.type = "password";
+												$("#tombol").html("<a href='#' id='tampil' name='tampil' onclick='myFunction()' class='icon-eye-open icon-large' style='cursor:pointer'></a>");
+  											}
+										}
 									</script>
 	</form>
 									<script>
@@ -21,24 +50,24 @@
 														e.preventDefault();
 														var formData = jQuery(this).serialize();
 														$.ajax({
-															type: "POST",
+															type: "post",
 															url: "login.php",
 															data: formData,
 															success: function(html){
 															 if (html == 'true_admin'){
-																$.jGrowl("Loading Please Wait......", { sticky: true });
-																$.jGrowl("Welcome to Bilal Islamic Seminary Information System", { header: 'Access Granted' });
+																$.jGrowl("Loading Mohon Tunggu......", { sticky: true });
+																$.jGrowl("Selamat Datang di SISTEM PEMBAYARAN SPP & UK SMK PEMBANGUNAN SURABAYA", { header: 'Akses Diterima' });
 															var delay = 1000;
 																setTimeout(function(){ window.location = 'dashboard.php'  }, delay);  
 															}else
 															if (html == 'true_user'){
-																$.jGrowl("Loading Please Wait......", { sticky: true });
-																$.jGrowl("Welcome to Bilal Islamic Seminary Information System", { header: 'Access Granted' });
+																$.jGrowl("Loading Mohon Tunggu......", { sticky: true });
+																$.jGrowl("Selamat Datang di SISTEM PEMBAYARAN SPP & UK SMK PEMBANGUNAN SURABAYA", { header: 'Akses Diterima' });
 															var delay = 1000;
 																setTimeout(function(){ window.location = 'normal/dashboard.php'  }, delay);  
 															}else
 															{
-															$.jGrowl("Please Check your username and Password", { header: 'Login Failed' });
+															$.jGrowl("Mohon diperiksa kembali Nama Pengguna dan Kata Sandi Anda", { header: 'Login Gagal' });
 															}
 															}
 														});
@@ -46,7 +75,7 @@
 													});
 									});
 									</script>
-<?php include('footer_index.php'); ?>
+<?php include('footer.php'); ?>
     </div> <!-- /container -->
 <?php include('script.php'); ?>
   </body>

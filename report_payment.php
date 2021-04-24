@@ -1,10 +1,15 @@
-<?php include('header.php'); ?>
+<?php 
+$tipe='normal';
+include('header.php'); ?>
 <?php include('session.php'); ?>
     <body >
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('report_sidebar_payment.php'); ?>
+				<?php
+                $jenis='Laporan'; 
+                $page='Bayar';
+                include('sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->

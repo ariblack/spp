@@ -1,12 +1,17 @@
-<?php include('header.php'); ?>
+<?php 
+$tipe='normal';
+include('header.php'); ?>
 <?php include('session.php'); ?>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_add_class.php'); ?>
+				<?php
+				$jenis='Normal'; 
+				$page = "Kelas";
+				include('sidebar.php'); ?>
 				<div class="span3" id="">
-				<?php  include('add_class1.php');  ?>		   			
+				<?php  include('add_class1.php');?>
 				</div>
                 <div class="span6" id="">
                      <div class="row-fluid">

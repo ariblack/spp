@@ -6,7 +6,11 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
                     </a>
-                    <span class="brand" href="#">BILAL ISLAMIC SEMINARY INFORMATION SYSTEM</span>
+                    <?php
+                        if ($tipe=='normal'){
+                            $judul='SMK PEMBANGUNAN SURABAYA';
+                    ?>
+                    <span class="brand" href="#"><?php echo $judul; ?> </span>
                     <div id="coll" class="nav-collapse collapse">
                         <ul class="nav pull-right">
 						<?php 
@@ -15,7 +19,7 @@
 						
 						?>
                             <li class="dropdown">
-                                <a href="#" id="name123" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user icon-large"></i><?php echo $row['firstname']." ".$row['lastname'];  ?> <i class="caret"></i></a>
+                                <a href="#" id="name123" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user icon-large"></i><?php echo $row['firstname']." ".$row['lastname'];  ?><i class="caret"></i></a>
                                 <ul class="dropdown-menu">
 									<!--  <li><a class="jkl" tabindex="-1" href="#">Profile</a></li> -->
 									<li>
@@ -27,6 +31,7 @@
                             </li>
                         </ul>
                     </div>
+                    <?php } ?>
                     <!--/.nav-collapse -->
                 </div>
             </div>

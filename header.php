@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <title>BILAL ISLAMIC SEMINARY INFORMATION SYSTEM </title>
+        <title>SISTEM PEMBAYARAN SPP & UK SMK PEMBANGUNAN SURABAYA</title>
         <!-- Bootstrap -->
 			<link href="images/logo.png" rel="icon" type="image">
 			<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -17,7 +17,7 @@
 			<!-- notification  -->
 			<link href="vendors/jGrowl/jquery.jgrowl.css" rel="stylesheet" media="screen">
 			<script src="vendors/jGrowl/jquery.jgrowl.js"></script>
-			<script src="vendor/easy-pie-chart-master/src/easypiechart.js"></script>
+			<script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
 			
 			
 			

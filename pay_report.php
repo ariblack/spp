@@ -1,19 +1,20 @@
-<?php include('header.php'); ?>
+<?php 
+$tipe='normal';
+include('header.php'); ?>
 <?php include('session.php'); ?>
 <?php
 $myperiod = $_POST['period'];
 $myclass = $_POST['class'];
 $mycriteria = $_POST['criteria'];
-
-
-
 ?>
-
     <body >
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_pay_report.php'); ?>
+				<?php
+                $jenis='Normal'; 
+                $page = 'Lap_Bayar';
+                include('sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->

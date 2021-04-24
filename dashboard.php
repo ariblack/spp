@@ -2,10 +2,16 @@
 <?php include('session.php'); ?>
 
     <body >
-		<?php include('navbar.php') ?>
+		<?php 
+            $tipe='normal';
+            include('navbar.php') 
+        ?>
         <div class="container-fluid" id="">
             <div class="row-fluid">
-					<?php include('sidebar_dashboard.php'); ?>
+					<?php
+                    $jenis='Normal'; 
+                    $page = 'Dashboard';
+                    include('sidebar.php'); ?>
                 <!--/span-->
                 <div class="span9" id="content">
 						<div class="row-fluid"></div>
@@ -15,7 +21,7 @@
                         <!-- block -->
                         <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">STATISTICS</div>
+                                <div class="muted pull-left">STATISTIK</div>
                             </div>
                             <div class="block-content collapse in">
 							        <div class="span12">
