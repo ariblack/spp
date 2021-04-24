@@ -10,7 +10,7 @@ for($i=0; $i < $N; $i++)
 	$row = mysqli_fetch_array($query);
 	$uname = $row['username'];
 
-	mysqli_query($conn,"insert into activity_log (username,date,action) values('$user_username',NOW(),'Deleted  user $uname')")or die (mysqli_error());
+	mysqli_query($conn,"insert into activity_log (username,date,action) values('$user_username',NOW(),'Menghapus Pengguna $uname')")or die (mysqli_error());
 	mysqli_query($conn,"DELETE FROM users where user_id='$id[$i]'");
 }
 header("location: users.php");

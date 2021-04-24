@@ -2,111 +2,115 @@
 <?php include('session.php'); ?>
 <?php $get_id = $_GET['id']; ?>
     <body>
-		<?php include('navbar.php'); ?>
+		<?php 
+		$tipe='normal';
+		include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_students.php'); ?>
+				<?php 
+				$jenis='Normal'; 
+                $page = "Siswa";
+				include('sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->
                         <div  id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><i class="icon-pencil icon-large"></i> Edit Student</div>
-                                <div class="muted pull-right"><a href="students.php"><i class="icon-arrow-left icon-large"></i> Back</a></div>
-                            </div>
+                                <div class="muted pull-left"><i class="icon-pencil icon-large"></i> Edit Siswa</div>
+                                <div class="muted pull-right"><a id="return" data-placement="left" title="Click to Kembali" href="students.php"><i class="icon-arrow-left icon-large"></i> Kembali</a></div>
+																<script type="text/javascript">
+																$(document).ready(function(){
+																	$('#return').tooltip('show');
+																	$('#return').tooltip('hide');
+																});
+																</script>                          
+						    </div>
                             <div class="block-content collapse in">
-						<?php
-						$query = mysqli_query($conn,"select * from students where student_id = '$get_id'")or die(mysqli_error());
-						$row = mysqli_fetch_array($query);
-						?>
+							<?php
+								$query = mysqli_query($conn,"select * from students where student_id = '$get_id'")or die(mysqli_error());
+								$row = mysqli_fetch_array($query);
+							?>						
 						<form id="update_student" class="form-signin" method="post">
 						<!-- span 4 -->
 										<div class="span4">
-										<input type="hidden" value="<?php echo $row['student_id']; ?>" class="input-block-level"  name="student_id" required>
-										<label>PAYMENT STATUS:</label>
+											<input type="hidden" value="<?php echo $row['student_id']; ?>" class="input-block-level"  name="student_id" required>																
+											<label>STATUS PEMBAYARAN :</label>
 											<select name="status" class="span5" required>
-													<option><?php echo $row['status']; ?></option>
-													<option value="paying">Paying</option>
-													<option value ="exempted">Exempted</option>
-													<option value="half">Half</option>
-													<option value="quarter">Quarter</option>
+													<option></option>
+													<option value = "Full" <?php if($row['status']=='Full') echo 'selected="selected"';?>>Full</option>
+													<option value = "Gratis" <?php if($row['status']=='Gratis') echo 'selected="selected"';?>>Gratis</option>
+													<option value = "Setengah" <?php if($row['status']=='Setengah') echo 'selected="selected"';?>>Setengah</option>
+													<option value = "Seperempat" <?php if($row['status']=='Seperempat') echo 'selected="selected"';?>>Seperempat</option>
 												</select>
-										<label>FIRST NAME:</label>
-											<input type="text" class="input-block-level"  name="fname" value="<?php echo $row['firstname']; ?>" required>
-											<label>MIDDLE NAME:</label>
-											<input type="text" class="input-block-level"  name="mname"     value="<?php echo $row['middlename']; ?>"     required>
-											<label>LAST NAME:</label>
-											<input type="text" class="input-block-level"  name="lname"  value="<?php echo $row['lastname']; ?>"  required>
-											<label>GENDER:</label>
+											<label>NAMA :</label>
+											<input type="text" value="<?php echo $row['name']; ?>" class="input-block-level" name="name" required>
+											<label>JENIS KELAMIN :</label>
 												<select name="gender" class="span5" required>
-													<option><?php echo $row['gender']; ?></option>
-													<option>Male</option>
-													<option>Female</option>
+													<option></option>
+													<option value = "Laki-laki" <?php if($row['gender']=='Laki-laki') echo 'selected="selected"';?>>Laki-laki</option>
+													<option value = "Perempuan" <?php if($row['gender']=='Perempuan') echo 'selected="selected"';?>>Perempuan</option>
 												</select>
-										</div>		
-						<div class="span4">
-							<label>DATE OF BIRTH:</label>
-									<input type="date" class="input-block-level"  name="dob" value="<?php echo $row['dob']; ?>">
-							<label>ADDRESS:</label>
-									<input type="text" value="<?php echo $row['address']; ?>" name="address" class="my_message" required>
-							<label>CLASS:</label>		
-									<select name="student_class" class="span5" required>
-									<option> <?php echo $row['class'];?></option>
-										<?php 
-											$result = mysqli_query($conn,"select * from class ")or die(mysqli_error());
-											while($row1 = mysqli_fetch_array($result)){
-											$myclass = $row1['class_name'];			
-									     ?>
-								<option value="<?php echo $myclass;?>"> <?php echo $myclass;?> </option>
-									<?php }?>
-							</select>
-							<dt><label>TRANSPORT:</label></dt>
-											<dd><label class="radio-inline"><input type="radio" name="transport" value="yes" checked='true'> Yes </label></dd>
-											<dd><label class="radio-inline"><input type="radio" name="transport" value="no"> No</label></dd>
-										
-									<label>ROUTE:</label>
-											<input type="text" value="<?php echo $row['route']; ?>"" name="route" class="my_message">
-									
-									<br>
-									<br>
-							<button class="btn btn-success" name="update"><i class="icon-save icon-large"></i> Update</button>
-						</div>
+											<label>TEMPAT LAHIR :</label>
+											<input type="text" class="input-block-level" name="pob" value="<?php echo $row['pob']; ?>" required>									
+											<label>TANGGAL LAHIR :</label>
+											<input type="date" class="input-block-level" name="dob" value="<?php echo $row['dob']; ?>" required>
+											<label>ALAMAT :</label>
+											<textarea rows = "4" class="input-block-level" name = "address">
+											<?php echo $row['address']; ?>"
+         									</textarea>
+										</div>
+						<!-- span 4 -->				
+						<!-- span 4 -->				
+										<div class="span4">																
+											<label>NAMA AYAH :</label>
+											<input type="text" class="input-block-level"  name="gfname" value="<?php echo $row['fathername']; ?>" required>
+											<label>NAMA IBU :</label>
+											<input type="text" class="input-block-level"  name="gmname" value="<?php echo $row['mothername']; ?>" required>
+											<label>NAMA WALI :</label>
+											<input type="text" class="input-block-level"  name="glname" value="<?php echo $row['guardianname']; ?>">
+											<label>NOMOR HP :</label>
+											<input type="text" class="input-block-level"  name="tel" value="<?php echo $row['tel']; ?>" onkeydown='return(event.which >= 48 && event.which <= 57)
+											|| event.which ==8 || event.which == 46' maxlength ="10">																							
+											<label>KELAS :</label>									
+											<select name="student_class" class="span5" required>
+												<option></option>
+												<?php 
+													$result = mysqli_query($conn,"select * from class ")or die(mysqli_error());
+													while($row1 = mysqli_fetch_array($result)){
+													$myclass = $row1['class_name'];			
+												?>
+												<option value="<?php echo $myclass;?>" <?php if($row['class']==$myclass) echo 'selected="selected"';?>> <?php echo $myclass;?> </option>
+												<?php }?>
+											</select>
+											<br>
+											<br>
+											<button class="btn btn-success" name="save"><i class="icon-save icon-large"></i> Simpan </button>			
+										</div>
 						<!--end span 4 -->	
 						<!-- span 4 -->	
-						<div class="span4">
-							<label>GUARDIAN FIRSTNAME:</label>
-							<input type="text" class="input-block-level"  name="gfname" value="<?php echo $row['gfirstname']; ?>" required>
-							<label>GUARDIAN MIDDLENAME:</label>
-							<input type="text" class="input-block-level"  name="gmname" value="<?php echo $row['gmiddlename']; ?>" required>
-							<label>GUARDIAN LASTNAME:</label>
-							<input type="text" class="input-block-level"  name="glname" value="<?php echo $row['glastname']; ?>" required>
-							<label>RELATIONSHIP TO STUDENT:</label>
-							<input type="text" class="input-block-level"  name="rship" value="<?php echo $row['rship']; ?>" required>
-							<label>PHONE NUMBER:</label>
-							<input type="text" class="input-block-level"  name="tel" value="<?php echo $row['tel']; ?>" onkeydown='return(event.which >= 48 && event.which <= 57)
-											|| event.which ==8 || event.which == 46' maxlength ="10" required>
+						<div class="span4">			
+																			
 						</div>
 						<!--end span 4 -->
-						<div class="span12"><hr></div>		
-							</form>			
-								<script>
-									jQuery(document).ready(function($){
-										$("#update_student").submit(function(e){
-											e.preventDefault();
-											var _this = $(e.target);
-											var formData = $(this).serialize();
-											$.ajax({
-												type: "POST",
-												url: "update_student.php",
-												data: formData,
-												success: function(html){
-													$.jGrowl("Member Successfully  Updated", { header: 'Student Updated' });
-													window.location = 'students.php';
-												}
-											});
-										});
-									});
-								</script>
+						</form>						
+			<script>
+			jQuery(document).ready(function($){
+				$("#update_student").submit(function(e){
+					e.preventDefault();
+					var _this = $(e.target);
+					var formData = $(this).serialize();
+					$.ajax({
+						type: "POST",
+						url: "update_student.php",
+						data: formData,
+						success: function(html){
+							$.jGrowl("Siswa Berhasil Diedit", { header: 'Edit Siswa' });
+							window.location = 'students.php';  
+						}
+					});
+				});
+			});
+			</script>
                             </div>
                         </div>
                         <!-- /block -->

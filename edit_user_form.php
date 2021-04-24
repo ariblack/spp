@@ -12,7 +12,7 @@
                                 <div class="span12">
 								<form method="post">
 										<div class="control-group">
-                                          <div class="controls">
+                      <div class="controls">
 										  <label>Status</label>
 										  <select name="status" placeholder = "Status">
 												<option value ="Administrator" <?php if($row['status']=='Administrator') echo 'selected="selected"';?>>Administrator</option>

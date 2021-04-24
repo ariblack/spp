@@ -1,17 +1,22 @@
 <?php include('header.php'); ?>
 <?php include('session.php'); ?>
     <body>
-		<?php include('navbar.php'); ?>
+		<?php 
+		$tipe='normal';
+		include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_dashboard.php'); ?>
+				<?php 
+				$jenis='Normal'; 
+                $page = "Siswa";
+				include('sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->
                         <div  id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><i class="icon-plus-sign icon-large"></i> Add Student</div>
-                                <div class="muted pull-right"><a id="return" data-placement="left" title="Click to Return" href="students.php"><i class="icon-arrow-left icon-large"></i> Back</a></div>
+                                <div class="muted pull-left"><i class="icon-plus-sign icon-large"></i> Tambah Siswa</div>
+                                <div class="muted pull-right"><a id="return" data-placement="left" title="Click to Kembali" href="students.php"><i class="icon-arrow-left icon-large"></i> Kembali</a></div>
 																<script type="text/javascript">
 																$(document).ready(function(){
 																	$('#return').tooltip('show');
@@ -24,73 +29,61 @@
 						<!-- span 4 -->
 										<div class="span4">
 										
-											<label>PAYMENT STATUS:</label>
+											<label>STATUS PEMBAYARAN :</label>
 											<select name="status" class="span5" required>
 													<option></option>
-													<option value="paying">Paying</option>
-													<option value ="exempted">Exempted</option>
-													<option value="half">Half</option>
-													<option value="quarter">Quarter</option>
+													<option value = "Full">Full</option>
+													<option value = "Gratis">Gratis</option>
+													<option value = "Setengah">Setengah</option>
+													<option value = "Seperempat">Seperempat</option>
 												</select>
-											<label>FIRST NAME:</label>
-											<input type="text" class="input-block-level"  name="fname" placeholder="First Name" required>
-											<label>MIDDLE NAME:</label>
-											<input type="text" class="input-block-level"  name="mname"     placeholder="Middle Name"     required>
-											<label>LAST NAME:</label>
-											<input type="text" class="input-block-level"  name="lname"  placeholder="Last Name"  required>
-											<label>GENDER:</label>
+											<label>NAMA :</label>
+											<input type="text" class="input-block-level" name="name" placeholder="Nama" required>
+											<label>JENIS KELAMIN :</label>
 												<select name="gender" class="span5" required>
 													<option></option>
-													<option>Male</option>
-													<option>Female</option>
-												</select>								
+													<option>Laki-laki</option>
+													<option>Perempuan</option>
+												</select>
+											<label>TEMPAT LAHIR :</label>
+											<input type="text" class="input-block-level" name="pob" placeholder="Tempat Lahir" required>									
+											<label>TANGGAL LAHIR :</label>
+											<input type="date" class="input-block-level" name="dob" placeholder="Tanggal Lahir" required>
+											<label>ALAMAT :</label>
+											<textarea rows = "4"  class="input-block-level" name = "address">
+         									</textarea>
 										</div>
 						<!-- span 4 -->				
 						<!-- span 4 -->				
-						<div class="span4">
-											
-											<label>DATE OF BIRTH:</label>
-											<input type="date" class="input-block-level"  name="dob" placeholder="Date of Birth">
-											<label>ADDRESS:</label>
-											<input type="text" Placeholder="Permanent Address" name="address" class="my_message" required>
-											<label>CLASS:</label>		
+										<div class="span4">																
+											<label>NAMA AYAH :</label>
+											<input type="text" class="input-block-level"  name="gfname" placeholder="Nama Ayah" required>
+											<label>NAMA IBU :</label>
+											<input type="text" class="input-block-level"  name="gmname" placeholder="Nama Ibu" required>
+											<label>NAMA WALI :</label>
+											<input type="text" class="input-block-level"  name="glname" placeholder="Nama Wali">
+											<label>PHONE NUMBER:</label>
+											<input type="text" class="input-block-level"  name="tel" placeholder="Nomor HP Aktif" onkeydown='return(event.which >= 48 && event.which <= 57)
+											|| event.which ==8 || event.which == 46' maxlength ="10">																							
+											<label>KELAS :</label>									
 											<select name="student_class" class="span5" required>
-											<option></option>
-											<?php 
-											$result = mysqli_query($conn,"select * from class ")or die(mysqli_error());
-											while($row = mysqli_fetch_array($result)){
-											$myclass = $row['class_name'];			
-									?>
-								<option value="<?php echo $myclass;?>"> <?php echo $myclass;?> </option>
-									<?php }?>
-							</select>
-							
-									<dt><label>TRANSPORT:</label></dt>
-											<dd><label class="radio-inline"><input type="radio" name="transport" value="yes" checked='true'> Yes </label></dd>
-											<dd><label class="radio-inline"><input type="radio" name="transport" value="no"> No</label></dd>
-										
-									<label>ROUTE:</label>
-											<input type="text" Placeholder="Route Name" name="route" class="my_message">
-									<br>
-									<br>
-									<button class="btn btn-success" name="save"><i class="icon-save icon-large"></i> Save </button>	
-											
-						</div>
+												<option></option>
+												<?php 
+													$result = mysqli_query($conn,"select * from class ")or die(mysqli_error());
+													while($row = mysqli_fetch_array($result)){
+													$myclass = $row['class_name'];			
+												?>
+												<option value="<?php echo $myclass;?>"> <?php echo $myclass;?> </option>
+												<?php }?>
+											</select>
+											<br>
+											<br>
+											<button class="btn btn-success" name="save"><i class="icon-save icon-large"></i> Simpan </button>			
+										</div>
 						<!--end span 4 -->	
 						<!-- span 4 -->	
-						<div class="span4">
-									
-							<label>GUARDIAN FIRSTNAME:</label>
-							<input type="text" class="input-block-level"  name="gfname" placeholder="First Name" required>
-							<label>GUARDIAN MIDDLENAME:</label>
-							<input type="text" class="input-block-level"  name="gmname" placeholder="Middle Name" required>
-							<label>GUARDIAN LASTNAME:</label>
-							<input type="text" class="input-block-level"  name="glname" placeholder="Last Name" required>
-							<label>RELATIONSHIP TO STUDENT:</label>
-							<input type="text" class="input-block-level"  name="rship" placeholder="Relationship To Student" required>
-							<label>PHONE NUMBER:</label>
-							<input type="text" class="input-block-level"  name="tel" placeholder="Telephone No" onkeydown='return(event.which >= 48 && event.which <= 57)
-											|| event.which ==8 || event.which == 46' maxlength ="10" required>
+						<div class="span4">			
+																			
 						</div>
 						<!--end span 4 -->
 						</form>						
@@ -105,7 +98,7 @@
 						url: "save_stud.php",
 						data: formData,
 						success: function(html){
-							$.jGrowl("Student Successfully  Added", { header: 'Student Added' });
+							$.jGrowl("Siswa Berhasil Ditambahkan", { header: 'Tambah Siswa' });
 							window.location = 'students.php';  
 						}
 					});

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Apr 2021 pada 06.11
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 5.6.40
+-- Waktu pembuatan: 24 Apr 2021 pada 10.48
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -52,7 +51,8 @@ INSERT INTO `activity_log` (`activity_log_id`, `username`, `date`, `action`) VAL
 (9, 'noel.titus', '2021-04-22 10:09:55', 'Add User Ariono.Ariono'),
 (10, 'noel.titus', '2021-04-22 10:57:47', 'Add Student Ariono Ariono'),
 (11, 'noel.titus', '2021-04-22 10:58:00', 'Deleted Student Ariono Ariono'),
-(12, 'noel.titus', '2021-04-22 11:03:08', 'Deleted  user Ariono.Ariono');
+(12, 'noel.titus', '2021-04-22 11:03:08', 'Deleted  user Ariono.Ariono'),
+(13, 'noel.titus', '2021-04-24 15:42:56', 'Tambah Siswa Ariono');
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,8 @@ CREATE TABLE `aprjun` (
 INSERT INTO `aprjun` (`aprjun_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 250000),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
+(4, 4, 'Form 6', 250000, 'Full', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,8 @@ CREATE TABLE `janmar` (
 INSERT INTO `janmar` (`janmar_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 250000),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
+(4, 4, 'Form 6', 250000, 'Full', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -151,7 +153,8 @@ CREATE TABLE `julsep` (
 INSERT INTO `julsep` (`julsep_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 0),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
+(4, 4, 'Form 6', 250000, 'Full', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -177,7 +180,8 @@ CREATE TABLE `octdec` (
 INSERT INTO `octdec` (`octdec_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'half', 125000, 0),
 (2, 2, 'Form 6', 250000, 'paying', 250000, 0),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0);
+(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
+(4, 4, 'Form 6', 250000, 'Full', 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -212,30 +216,27 @@ INSERT INTO `payment_made` (`pay_id`, `student_id`, `period`, `amount`, `date_of
 DROP TABLE IF EXISTS `students`;
 CREATE TABLE `students` (
   `student_id` int(11) NOT NULL,
-  `firstname` varchar(30) NOT NULL,
-  `middlename` varchar(30) NOT NULL,
-  `lastname` varchar(30) NOT NULL,
-  `gender` varchar(15) NOT NULL,
-  `dob` varchar(30) NOT NULL,
-  `address` varchar(30) NOT NULL,
-  `class` varchar(30) NOT NULL,
-  `gfirstname` varchar(25) NOT NULL,
-  `gmiddlename` varchar(25) NOT NULL,
-  `glastname` varchar(25) NOT NULL,
-  `rship` varchar(30) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `gender` enum('Laki-laki','Perempuan') NOT NULL,
+  `pob` varchar(255) NOT NULL,
+  `dob` date NOT NULL,
+  `address` text NOT NULL,
+  `class` varchar(10) NOT NULL,
+  `fathername` varchar(100) NOT NULL,
+  `mothername` varchar(100) NOT NULL,
+  `guardianname` varchar(100) NOT NULL,
   `tel` varchar(30) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `transport` varchar(60) NOT NULL,
-  `route` varchar(50) NOT NULL
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `students`
 --
 
-INSERT INTO `students` (`student_id`, `firstname`, `middlename`, `lastname`, `gender`, `dob`, `address`, `class`, `gfirstname`, `gmiddlename`, `glastname`, `rship`, `tel`, `status`, `transport`, `route`) VALUES
-(1, 'aaa', 'bbb', 'cvvv', 'Male', '2016-10-25', 'bububu', 'Form 6', 'oplkk', 'jjj', 'rfrf', 'father', '0789554433', 'half', 'yes', 'kijichi'),
-(2, 'buel', 'bol', 'buel', 'Female', '2016-10-26', 'stonetown', 'Form 6', 'bun', 'bol', 'buel', 'mother', '0717884452', 'paying', 'no', '');
+INSERT INTO `students` (`student_id`, `name`, `gender`, `pob`, `dob`, `address`, `class`, `fathername`, `mothername`, `guardianname`, `tel`, `status`) VALUES
+(1, 'aaa', 'Laki-laki', '', '2016-10-25', 'bububu', 'Form 6', 'oplkk', 'jjj', 'rfrf', '0789554433', 'half'),
+(2, 'buel', 'Perempuan', '', '2016-10-26', 'stonetown', 'Form 6', 'bun', 'bol', 'buel', '0717884452', 'paying'),
+(4, 'Ariono', 'Laki-laki', 'SURABAYA', '2010-02-14', 'KAPASMADYA			', 'Form 6', 'SUPRI', 'ATUN', '', '0878596676', 'Full');
 
 -- --------------------------------------------------------
 
@@ -281,11 +282,13 @@ CREATE TABLE `user_log` (
 --
 
 INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, `user_id`) VALUES
-(1, 'noel.titus', '2016-10-24 09:10:07', '2021-04-22 11:03:15', 3),
-(2, 'noel.titus', '2016-10-24 09:11:10', '2021-04-22 11:03:15', 3),
-(3, 'noel.titus', '2016-10-24 09:23:04', '2021-04-22 11:03:15', 3),
+(1, 'noel.titus', '2016-10-24 09:10:07', '2021-04-24 15:48:17', 3),
+(2, 'noel.titus', '2016-10-24 09:11:10', '2021-04-24 15:48:17', 3),
+(3, 'noel.titus', '2016-10-24 09:23:04', '2021-04-24 15:48:17', 3),
 (4, 'abdul.hemedy', '2016-10-24 09:23:30', '2016-10-24 09:36:55', 4),
-(5, 'noel.titus', '2021-04-22 09:16:48', '2021-04-22 11:03:15', 3);
+(5, 'noel.titus', '2021-04-22 09:16:48', '2021-04-24 15:48:17', 3),
+(6, 'noel.titus', '2021-04-23 15:33:24', '2021-04-24 15:48:17', 3),
+(7, 'noel.titus', '2021-04-24 13:40:33', '2021-04-24 15:48:17', 3);
 
 --
 -- Indexes for dumped tables
@@ -337,7 +340,8 @@ ALTER TABLE `payment_made`
 -- Indeks untuk tabel `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`student_id`);
+  ADD PRIMARY KEY (`student_id`),
+  ADD KEY `class` (`class`);
 
 --
 -- Indeks untuk tabel `users`
@@ -359,13 +363,13 @@ ALTER TABLE `user_log`
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `aprjun`
 --
 ALTER TABLE `aprjun`
-  MODIFY `aprjun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `aprjun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `class`
@@ -377,19 +381,19 @@ ALTER TABLE `class`
 -- AUTO_INCREMENT untuk tabel `janmar`
 --
 ALTER TABLE `janmar`
-  MODIFY `janmar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `janmar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `julsep`
 --
 ALTER TABLE `julsep`
-  MODIFY `julsep_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `julsep_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `octdec`
 --
 ALTER TABLE `octdec`
-  MODIFY `octdec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `octdec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `payment_made`
@@ -401,7 +405,7 @@ ALTER TABLE `payment_made`
 -- AUTO_INCREMENT untuk tabel `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -413,7 +417,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
