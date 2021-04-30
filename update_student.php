@@ -24,9 +24,10 @@
 		fathername ='$gfname',
 		mothername ='$gmname',
 		guardianname ='$glname',
-		tel ='$tel', status ='$status', 
+		tel ='$tel', status ='$status' 
 		where student_id = '$student_id'
 		")or die(mysqli_error());
+		echo ($gender);
 		mysqli_query($conn,"insert into activity_log (username,date,action) values('$user_username',NOW(),'Edit Siswa $name')")or die (mysqli_error());
 		
 		$result1 = mysqli_query($conn,"select * from class where class_name='$student_class'  ")or die(mysqli_error());

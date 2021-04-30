@@ -36,7 +36,6 @@
 											<input type="hidden" value="<?php echo $row['student_id']; ?>" class="input-block-level"  name="student_id" required>																
 											<label>STATUS PEMBAYARAN :</label>
 											<select name="status" class="span5" required>
-													<option></option>
 													<option value = "Full" <?php if($row['status']=='Full') echo 'selected="selected"';?>>Full</option>
 													<option value = "Gratis" <?php if($row['status']=='Gratis') echo 'selected="selected"';?>>Gratis</option>
 													<option value = "Setengah" <?php if($row['status']=='Setengah') echo 'selected="selected"';?>>Setengah</option>
@@ -46,7 +45,6 @@
 											<input type="text" value="<?php echo $row['name']; ?>" class="input-block-level" name="name" required>
 											<label>JENIS KELAMIN :</label>
 												<select name="gender" class="span5" required>
-													<option></option>
 													<option value = "Laki-laki" <?php if($row['gender']=='Laki-laki') echo 'selected="selected"';?>>Laki-laki</option>
 													<option value = "Perempuan" <?php if($row['gender']=='Perempuan') echo 'selected="selected"';?>>Perempuan</option>
 												</select>
@@ -54,10 +52,8 @@
 											<input type="text" class="input-block-level" name="pob" value="<?php echo $row['pob']; ?>" required>									
 											<label>TANGGAL LAHIR :</label>
 											<input type="date" class="input-block-level" name="dob" value="<?php echo $row['dob']; ?>" required>
-											<label>ALAMAT :</label>
-											<textarea rows = "4" class="input-block-level" name = "address">
-											<?php echo $row['address']; ?>"
-         									</textarea>
+											<label>ALAMAT DOMISILI :</label>
+											<textarea rows = "4" class="input-block-level" name = "address"><?php echo $row['address']; ?></textarea>
 										</div>
 						<!-- span 4 -->				
 						<!-- span 4 -->				
@@ -70,10 +66,9 @@
 											<input type="text" class="input-block-level"  name="glname" value="<?php echo $row['guardianname']; ?>">
 											<label>NOMOR HP :</label>
 											<input type="text" class="input-block-level"  name="tel" value="<?php echo $row['tel']; ?>" onkeydown='return(event.which >= 48 && event.which <= 57)
-											|| event.which ==8 || event.which == 46' maxlength ="10">																							
+											|| event.which ==8 || event.which == 46' maxlength ="16">																							
 											<label>KELAS :</label>									
 											<select name="student_class" class="span5" required>
-												<option></option>
 												<?php 
 													$result = mysqli_query($conn,"select * from class ")or die(mysqli_error());
 													while($row1 = mysqli_fetch_array($result)){
@@ -104,7 +99,7 @@
 						url: "update_student.php",
 						data: formData,
 						success: function(html){
-							$.jGrowl("Siswa Berhasil Diedit", { header: 'Edit Siswa' });
+							$.jGrowl("Siswa Berhasil Diedit "+html, { header: 'Edit Siswa' });
 							window.location = 'students.php';  
 						}
 					});

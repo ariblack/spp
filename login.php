@@ -16,11 +16,11 @@
 		$_SESSION['id']=$row['user_id'];
 		
 		
-		if($status=='administrator'){
+		if($status=='Administrator'){
 			echo 'true_admin';	
 			mysqli_query($conn,"insert into user_log (username,login_date,user_id)values('$username',NOW(),".$row['user_id'].")")or die(mysqli_error());
 		}else
-		if($status=='normal'){
+		if($status=='Normal'){
 			echo 'true_user';	
 			mysqli_query($conn,"insert into user_log (username,login_date,user_id)values('$username',NOW(),".$row['user_id'].")")or die(mysqli_error());
 		}

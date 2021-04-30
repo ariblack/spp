@@ -31,7 +31,7 @@
 										
 											<label>STATUS PEMBAYARAN :</label>
 											<select name="status" class="span5" required>
-													<option></option>
+													<option value="" disabled selected hidden>Status Pembayaran</option>																
 													<option value = "Full">Full</option>
 													<option value = "Gratis">Gratis</option>
 													<option value = "Setengah">Setengah</option>
@@ -41,7 +41,7 @@
 											<input type="text" class="input-block-level" name="name" placeholder="Nama" required>
 											<label>JENIS KELAMIN :</label>
 												<select name="gender" class="span5" required>
-													<option></option>
+												<option value="" disabled selected hidden>Jenis Kelamin</option>
 													<option>Laki-laki</option>
 													<option>Perempuan</option>
 												</select>
@@ -49,9 +49,8 @@
 											<input type="text" class="input-block-level" name="pob" placeholder="Tempat Lahir" required>									
 											<label>TANGGAL LAHIR :</label>
 											<input type="date" class="input-block-level" name="dob" placeholder="Tanggal Lahir" required>
-											<label>ALAMAT :</label>
-											<textarea rows = "4"  class="input-block-level" name = "address">
-         									</textarea>
+											<label>ALAMAT DOMISILI :</label>
+											<textarea rows = "4" class="input-block-level" name = "address" placeholder="Alamat Domisili"></textarea>
 										</div>
 						<!-- span 4 -->				
 						<!-- span 4 -->				
@@ -64,10 +63,10 @@
 											<input type="text" class="input-block-level"  name="glname" placeholder="Nama Wali">
 											<label>PHONE NUMBER:</label>
 											<input type="text" class="input-block-level"  name="tel" placeholder="Nomor HP Aktif" onkeydown='return(event.which >= 48 && event.which <= 57)
-											|| event.which ==8 || event.which == 46' maxlength ="10">																							
+											|| event.which ==8 || event.which == 46' maxlength ="16">																							
 											<label>KELAS :</label>									
 											<select name="student_class" class="span5" required>
-												<option></option>
+												<option value="" disabled selected hidden>Kelas</option>					
 												<?php 
 													$result = mysqli_query($conn,"select * from class ")or die(mysqli_error());
 													while($row = mysqli_fetch_array($result)){
