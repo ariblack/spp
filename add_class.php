@@ -22,16 +22,16 @@ include('header.php'); ?>
 							$query = mysqli_query($conn,"select * from class")or die(mysqli_error());
 							$count = mysqli_num_rows($query);
 							?>
-                                <div class="muted pull-left"><i class="icon-reorder icon-large"></i> Class List</div>
+                                <div class="muted pull-left"><i class="icon-reorder icon-large"></i> Daftar Kelas</div>
                                 <div class="muted pull-right">
-									Number of Classes: <span class="badge badge-info"><?php echo $count; ?></span>
+									Jumlah Kelas : <span class="badge badge-info"><?php echo $count; ?></span>
 								</div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
 								<form action="delete_class1.php" method="post">
   									<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
-									<a data-placement="right" title="Click to Delete check item" data-toggle="modal" href="#class_delete" id="delete"  class="btn btn-danger" name=""><i class="icon-trash icon-large"></i> Delete</a>
+									<a data-placement="right" title="Click untuk Menghapus Item yang di Centang" data-toggle="modal" href="#class_delete" id="delete"  class="btn btn-danger" name=""><i class="icon-trash icon-large"></i> Hapus</a>
 														<script type="text/javascript">
 														$(document).ready(function(){
 															$('#delete').tooltip('show');
@@ -42,9 +42,9 @@ include('header.php'); ?>
 										<thead>
 										  <tr>
 												<th></th>
-												<th>Class Name</th>
-												<th>Category</th>
-												<th>Fees</th>
+												<th>Nama Kelas</th>
+												<th>Uang Kegiatan</th>
+												<th>SPP</th>
 												<th></th>
 										   </tr>
 										</thead>
@@ -59,10 +59,10 @@ include('header.php'); ?>
 												<input id="optionsCheckbox" class="uniform_on" name="selector[]" type="checkbox" value="<?php echo $id; ?>">
 												</td>
 												<td><?php echo $row['class_name']; ?> </td>
-												<td><?php echo $row['category']; ?></td>
 												<td><?php echo $row['fee']; ?></td>
+												<td><?php echo $row['spp']; ?></td>
 												<td width="80">
-												<a data-placement="left" id="edit<?php echo $id; ?>" title="Click to Edit" href="edit_class1.php<?php echo '?id='.$id; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i> Edit</a>
+												<a data-placement="left" id="edit<?php echo $id; ?>" title="Click untuk Edit" href="edit_class1.php<?php echo '?id='.$id; ?>"  data-toggle="modal" class="btn btn-success"><i class="icon-pencil icon-large"></i> Edit</a>
 														<script type="text/javascript">
 														$(document).ready(function(){
 															$('#edit<?php echo $id; ?>').tooltip('show');

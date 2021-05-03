@@ -32,19 +32,13 @@
 						Jenis Kelamin : <strong><?php echo $row['gender']; ?></strong><hr>
 						Tempat Lahir : <strong><?php echo $row['pob']; ?></strong><hr>
 						Tanggal Lahir : <strong><?php echo $row['dob']; ?></strong><hr>
-						Alamat Domisili : <strong><?php echo $row['address']; ?></strong><hr>
-						Status Pembayaran : <strong><?php echo $row['status']; ?></strong><hr>
 						</div>
 						<div class="span5">
-						Kelas : <strong><?php echo $row['class']; ?></strong><hr>
-						<?php 
-						$query2 = mysqli_query($conn,"select * from class where class_name = '$cl'")or die(mysqli_error());
-						while ($row1=mysqli_fetch_array($query2)){
-						$category = $row1['category'];
-						$fee = $row1['fee'];
-						}?>
-						Kategori Kelas : <strong><?php echo $category; ?></strong><hr>
-						Biaya Kelas: <strong><?php echo $fee; ?></strong><hr>
+						Alamat Domisili : <strong><?php echo $row['address']; ?></strong><hr>
+						Nama Ayah : <strong><?php echo $row['fathername']; ?></strong><hr>
+						Nama Ibu : <strong><?php echo $row['mothername']; ?></strong><hr>
+						Nama Wali : <strong><?php echo $row['guardianname']; ?></strong><hr>
+						No Telepon : <strong><?php echo $row['tel']; ?>
 						</div>
 <div class="span12">
 	<hr>
@@ -52,19 +46,39 @@
 	<table cellpadding="0" cellspacing="0" border="0" class="table" id="">
 		<thead>
 			<tr>
-				<th>Nama Ayah</th>
-				<th>Nama Ibu</th>
-				<th>Nama Wali</th>
-				<th>No Telepon</th>
-				<th class="empty"></th>
+				<th>Kelas</th>
+				<th>Status Pembayaran</th>
+				<th>Biaya Kelas</th>
+				<th>Dibayar</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><?php echo $row['fathername']; ?></td> 
-				<td><?php echo $row['mothername']; ?></td> 
-				<td><?php echo $row['guardianname']; ?></td> 
-				<td><?php echo $row['tel']; ?></td> 
+				<td><?php echo $row['class']; ?></td>
+				<?php 
+					$query2 = mysqli_query($conn,"select * from class where class_name = '$cl'")or die(mysqli_error());
+					while ($row1=mysqli_fetch_array($query2)){
+						$fee = $row1['fee'];
+					}
+					
+					$status = $row['status'];
+
+					if($status=='Full'){
+						$status_fee =$fee;
+					}else
+					if($status=='Gratis'){
+						$status_fee =0;
+					}else
+					if($status=='Setengah'){
+						$status_fee =$fee/2;
+					}else
+					if($status=='Seperempat'){
+						$status_fee =$fee/4;
+					}
+					?> 
+				<td><?php echo $status; ?></td> 
+				<td><?php echo $fee; ?></td>
+				<td><?php echo $status_fee; ?></td> 
 			</tr>
    
 	

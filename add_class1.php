@@ -7,39 +7,31 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
 								<form method="post" id="add_class1">
+
 										<div class="control-group">
                                           <div class="controls">
-										  <label>Class Category</label>
-										  <select name="category" placeholder = "Category">
-												<option></option>
-												<option value ="Nursery">Nursery </option>
-												<option value ="Primary">Primary </option>
-												<option value ="Secondary">Secondary </option>
-												
-											</select>
-                                            
+										  <label>Nama Kelas</label>
+                                           <input class="input focused"  name="class_name" id="focusedInput" type="text" placeholder = "Nama Kelas" required>
                                           </div>
                                         </div>
-										 
+										
 										<div class="control-group">
                                           <div class="controls">
-										  <label>Class Name</label>
-                                           <input class="input focused"  name="class_name" id="focusedInput" type="text" placeholder = "Class Name" required>
+										  <label>Uang Kegiatan</label>
+                                            <input class="input focused"  name="fee" id="focusedInput" type="text" placeholder = "Uang Kegiatan" required>
                                           </div>
                                         </div>
 										
-											<div class="control-group">
+										<div class="control-group">
                                           <div class="controls">
-										  <label>Fees Per 3 Months</label>
-                                            <input class="input focused"  name="fee" id="focusedInput" type="text" placeholder = "Fees" required>
+										  <label>Uang SPP</label>
+                                            <input class="input focused"  name="spp" id="focusedInput" type="text" placeholder = "SPP" required>
                                           </div>
                                         </div>
 										
-										
-										
-											<div class="control-group">
+										<div class="control-group">
                                           <div class="controls">
-												<button  data-placement="right" title="Click to Save" id="save" name="save" class="btn btn-inverse"><i class="icon-save icon-large"></i> Save</button>
+												<button  data-placement="right" title="Click to Simpan" id="save" name="save" class="btn btn-inverse"><i class="icon-save icon-large"></i> Simpan</button>
 														<script type="text/javascript">
 														$(document).ready(function(){
 															$('#save').tooltip('show');
@@ -65,7 +57,7 @@
 						url: "save_class.php",
 						data: formData,
 						success: function(html){
-							$.jGrowl("Class Successfully  Added", { header: 'Class Added' });
+							$.jGrowl("Kelas Berhail Ditambahkan", { header: 'Tambah Kelas' });
 							window.location = 'add_class.php';  
 						}
 					});

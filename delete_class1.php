@@ -10,7 +10,7 @@ for($i=0; $i < $N; $i++)
 	$row = mysqli_fetch_array($query);
 	$class_name = $row['class_name'];
 
-	mysqli_query($conn,"insert into activity_log (username,date,action) values('$user_username',NOW(),'Deleted  Class $class_name')")or die (mysqli_error());
+	mysqli_query($conn,"insert into activity_log (username,date,action) values('$user_username',NOW(),'Menghapus Kelas $class_name')")or die (mysqli_error());
 	mysqli_query($conn,"DELETE FROM class where class_id='$id[$i]'");
 }
 header("location: add_class.php");
