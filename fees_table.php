@@ -12,14 +12,14 @@
 					<th>Kelas</th>
 					<th>Biaya</th>
 					<th>Status</th>
-					<th>Biaya yang Harus Dibayar</th>
+					<th>Biaya Dibayar</th>
 				
 					<th class="empty"></th>
 		</tr>
 		</thead>
 		<tbody>
 		<?php
-		$query2 = mysqli_query($conn,"select * from students where status != 'exempted' ")or die(mysqli_error());
+		$query2 = mysqli_query($conn,"select * from students where status != 'Gratis' ")or die(mysqli_error());
 		while($row2= mysqli_fetch_array($query2)){
 		$student_name = $row2['name'];
 		$stud_id = $row2['student_id'];

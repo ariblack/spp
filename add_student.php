@@ -28,23 +28,15 @@
 						<form id="add_student" class="form-signin" method="post">
 						<!-- span 4 -->
 										<div class="span4">
-										
-											<label>STATUS PEMBAYARAN :</label>
-											<select name="status" class="span5" required>
-													<option value="" disabled selected hidden>Status Pembayaran</option>																
-													<option value = "Full">Full</option>
-													<option value = "Gratis">Gratis</option>
-													<option value = "Setengah">Setengah</option>
-													<option value = "Seperempat">Seperempat</option>
-												</select>
-											<label>NAMA :</label>
+											<label>NAMA SISWA :</label>
 											<input type="text" class="input-block-level" name="name" placeholder="Nama" required>
 											<label>JENIS KELAMIN :</label>
-												<select name="gender" class="span5" required>
+											<select name="gender" class="input-block-level" required>
 												<option value="" disabled selected hidden>Jenis Kelamin</option>
-													<option>Laki-laki</option>
-													<option>Perempuan</option>
-												</select>
+												<option>Laki-laki</option>
+												<option>Perempuan</option>
+											</select>
+
 											<label>TEMPAT LAHIR :</label>
 											<input type="text" class="input-block-level" name="pob" placeholder="Tempat Lahir" required>									
 											<label>TANGGAL LAHIR :</label>
@@ -65,7 +57,7 @@
 											<input type="text" class="input-block-level"  name="tel" placeholder="Nomor HP Aktif" onkeydown='return(event.which >= 48 && event.which <= 57)
 											|| event.which ==8 || event.which == 46' maxlength ="16">																							
 											<label>KELAS :</label>									
-											<select name="student_class" class="span5" required>
+											<select name="student_class" class="input-block-level" required>
 												<option value="" disabled selected hidden>Kelas</option>					
 												<?php 
 													$result = mysqli_query($conn,"select * from class ")or die(mysqli_error());
@@ -81,9 +73,28 @@
 										</div>
 						<!--end span 4 -->	
 						<!-- span 4 -->	
-						<div class="span4">			
-																			
-						</div>
+										<div class="span4">			
+											<label>POTONGAN SPP :</label>
+											<select name="status" class="input-block-level" required>
+												<option value="" disabled selected hidden>Potongan SPP</option>																
+												<option value = "Full">Full</option>
+												<option value = "Gratis">Gratis</option>
+												<option value = "Setengah">Setengah</option>
+												<option value = "Seperempat">Seperempat</option>
+											</select>											
+										</div>
+
+										<div class="span4">			
+											<label>POTONGAN UANG KEGIATAN :</label>
+											<select name="status" class="input-block-level" required>
+												<option value="" disabled selected hidden>Status Pembayaran</option>																
+												<option value = "Full">Full</option>
+												<option value = "Gratis">Gratis</option>
+												<option value = "Setengah">Setengah</option>
+												<option value = "Seperempat">Seperempat</option>
+
+											</select>											
+										</div>
 						<!--end span 4 -->
 						</form>						
 			<script>
