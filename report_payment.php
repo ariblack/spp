@@ -20,14 +20,14 @@ include('header.php'); ?>
 						 	
 						?>
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left"><i class="icon-reorder icon-large"></i> Students List</div>
+                                <div class="muted pull-left"><i class="icon-reorder icon-large"></i> Daftar Siswa</div>
                                 <div class="muted pull-right">
-									Number of Students: <span class="badge badge-info"><?php  echo $count;  ?></span>
+									Jumlah Siswa : <span class="badge badge-info"><?php  echo $count;  ?></span>
 								</div>
                             </div>
                             <div class="block-content collapse in">
 								<div class="span12" id="studentTableDiv">
-								<h2 id="noch">Students List</h2>
+								<h2 id="noch">Daftar Siswa</h2>
 									<?php include('report_payment_table.php'); ?>
                                 </div>
                             </div>

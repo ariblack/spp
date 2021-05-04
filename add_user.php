@@ -12,6 +12,7 @@
 										  <label>Status</label>
 										  <select name="status" placeholder = "Status">
 												<option></option>
+												<option value="" disabled selected hidden>Status Pengguna</option>
 												<option value ="Administrator">Administrator</option>
 												<option value ="Normal">Normal</option>
 											</select>

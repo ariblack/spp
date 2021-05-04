@@ -1,18 +1,23 @@
-<?php include('header.php'); ?>
+<?php 
+$tipe='normal';
+include('header.php'); ?>
 <?php include('session.php'); ?>
 <?php $get_id = $_GET['id']; ?>
     <body>
 		<?php include('navbar.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-				<?php include('sidebar_fees.php'); ?>
+				<?php 
+				$jenis='Normal'; 
+                $page = "Bayar";
+				include('sidebar.php'); ?>
                 <div class="span9" id="">
                      <div class="row-fluid">
                         <!-- block -->
                         <div  id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-right">
-										<a href="fees.php"><i class="icon-arrow-left icon-large"></i> Back</a>
+										<a href="fees.php"><i class="icon-arrow-left icon-large"></i> Kembali</a>
 								</div>
                             </div>
                             <div class="block-content collapse in">
@@ -22,34 +27,33 @@
 						$cl = $row['class'];
 						$status = $row['status'];
 						?>
-						<div class="alert alert-success">PAYMENT DETAILS</div>
+						<div class="alert alert-success">DETAIL PEMBAYARAN</div>
 						<div class="span6">
-						FULL NAME: <strong><?php echo $row['firstname']." ".$row['middlename']." ".$row['lastname']; ?></strong><hr>
-						CLASS NAME: <strong><?php echo $cl; ?></strong><hr>
+						NAMA LENGKAP : <strong><?php echo $row['name']; ?></strong><hr>
+						NAMA KELAS : <strong><?php echo $cl; ?></strong><hr>
 						
 						<?php 
 						$query3 = mysqli_query($conn,"select * from class where class_name = '$cl'")or die(mysqli_error());
 						while ($row3=mysqli_fetch_array($query3)){
 						$fee = $row3['fee'];
-						if($status=='paying'){
-									$status_fee =$fee;
-								}else
-								if($status=='exempted'){
-									$status_fee =0;
-								}else
-								if($status=='half'){
+
+							if($status=='Full'){
+								$status_fee =$fee;
+							}else
+							if($status=='Gratis'){
+								$status_fee =0;
+							}else
+							if($status=='Setengah'){
 								$status_fee =$fee/2;
-								}else
-								if($status=='quarter'){
-									$status_fee =$fee/4;
-								}
-						
-						
+							}else
+							if($status=='Seperempat'){
+								$status_fee =$fee/4;
+							}
 						}?>
 												
-						CLASS FEE: <strong><?php echo $fee; ?></strong><hr>
-						STUDENT STATUS: <strong><?php echo $status; ?></strong><hr>
-						FEE TO PAY: <strong><?php echo $status_fee; ?></strong><hr>
+						UANG KEGIATAN : <strong><?php echo $fee; ?></strong><hr>
+						STATUS SISWA : <strong><?php echo $status; ?></strong><hr>
+						BIAYA YANG HARUS DIBAYAR : <strong><?php echo $status_fee; ?></strong><hr>
 						</div>
 						
 						

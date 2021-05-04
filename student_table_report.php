@@ -2,19 +2,18 @@
 	<form action="delete_stud.php" method="post">
 	<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
 		<div class="pull-right">
-	 <a href="#" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Print List</a> 
+	 <a href="#" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Cetak Daftar</a> 
 	
 	</div>
 	<br><br>
 		<thead>
 		<tr>
-					<th>Full Name</th>
-					<th>Gender</th>
-					<th>Class</th>
-					<th>Class Fee</th>
+					<th>Nama Lengkap</th>
+					<th>Jenis Kelamin</th>
+					<th>Kelas</th>
+					<th>Uang Kegiatan</th>
 					<th>Status</th>
-					<th>Transport Route</th>
-					<th>Phone Number</th>
+					<th>No HP</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -32,24 +31,11 @@
 		}	
 		?>
 		<tr>
-		<td><?php echo $row['firstname'].' '.$row['middlename'].' '.$row['lastname'];?></td> 
+		<td><?php echo $row['name'];?></td> 
 		<td><?php echo $row['gender']; ?></td> 
 		<td><?php echo $row['class']; ?></td> 
 		<td><?php echo $class_fee; ?></td> 
 		<td><?php echo $row['status']; ?></td>
-		<td>
-		<?php 
-				$transport = $row['transport'];
-				if($transport=='yes'){
-					$route=$row['route'];
-				}else
-				if($transport=='no'){
-					$route='no transport';
-				}
-		
-		?>
-		<?php echo $route; ?></td>
-		</td>
 		<td><?php echo $row['tel']; ?></td>
 		</tr>
 	<?php } ?>    

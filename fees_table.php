@@ -2,17 +2,17 @@
 	<form action="" method="post">
 	<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
 		<div class="pull-right">
-	 <a href="#" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Print List</a> 
+	 <a href="#" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Cetak Daftar</a> 
 	 
 	</div>
 <br><br>
 		<thead>
 		<tr>
-					<th>Student Name</th>
-					<th>Class</th>
-					<th>Fee</th>
+					<th>Nama Siswa</th>
+					<th>Kelas</th>
+					<th>Biaya</th>
 					<th>Status</th>
-					<th>Fee To Pay</th>
+					<th>Biaya yang Harus Dibayar</th>
 				
 					<th class="empty"></th>
 		</tr>
@@ -21,25 +21,25 @@
 		<?php
 		$query2 = mysqli_query($conn,"select * from students where status != 'exempted' ")or die(mysqli_error());
 		while($row2= mysqli_fetch_array($query2)){
-		$student_name = $row2['firstname'].' '.$row2['middlename'].' '.$row2['lastname'];
-		$stud_id =$row2['student_id'];
-		$status =$row2['status']; 
-		$myclass =$row2['class'];
+		$student_name = $row2['name'];
+		$stud_id = $row2['student_id'];
+		$status = $row2['status']; 
+		$myclass = $row2['class'];
 		
 		$query3 = mysqli_query($conn,"select * from class where class_name='$myclass' ")or die(mysqli_error());
 		while($row3= mysqli_fetch_array($query3)){
 		$fee = $row3['fee'];
 		}		
-		if($status=='paying'){
+		if($status=='Full'){
 			$status_fee =$fee;
 		}else
-		if($status=='exempted'){
+		if($status=='Gratis'){
 			$status_fee =0;
 		}else
-		if($status=='half'){
+		if($status=='Setengah'){
 			$status_fee =$fee/2;
 		}else
-		if($status=='quarter'){
+		if($status=='Seperempat'){
 			$status_fee =$fee/4;
 		}
 		
@@ -52,9 +52,9 @@
 		<td><?php echo $status_fee; ?></td> 
 	
 		<td class="empty" width="250">
-		<a data-toggle="modal" href="#<?php echo $stud_id; ?>" id="#<?php echo $stud_id; ?>"class="btn btn-inverse" name=""><i class="icon-money icon-large"></i> Pay</a>
+		<a data-toggle="modal" href="#<?php echo $stud_id; ?>" id="#<?php echo $stud_id; ?>"class="btn btn-inverse" name=""><i class="icon-money icon-large"></i> Bayar</a>
 		<?php include('modal_pay.php'); ?>
-		<a data-placement="top" title="Click to View all Details" id="view<?php echo $stud_id; ?>" href="view_pay.php<?php echo '?id='.$stud_id; ?>" class="btn btn-warning"><i class="icon-search icon-large"></i> View Payment</a>
+		<a data-placement="top" title="Click Untuk Melihat Secara Lengkap" id="view<?php echo $stud_id; ?>" href="view_pay.php<?php echo '?id='.$stud_id; ?>" class="btn btn-warning"><i class="icon-search icon-large"></i> Lihat Pembayaran</a>
 			
 		</td>
 		</tr>

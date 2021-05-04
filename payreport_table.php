@@ -2,17 +2,18 @@
 	<form action="" method="post">
 	<table cellpadding="0" cellspacing="0" border="0" class="table" id="example">
 	<div class="pull-right">
-	 <a href="#" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Print List</a> 
+	 <a href="#" onclick="window.print()" class="btn btn-info"><i class="icon-print icon-large"></i> Cetak Daftar</a> 
 	</div>
 	<br><br>
 	<thead>
 		<tr>
-					<th>Full Name</th>
-					<th>Class</th>
-					<th>Class Fee</th>
+					<th>Nama Lengkap</th>
+					<th>Kelas</th>
+					<th>Uang Kegiatan</th>
 					<th>Status</th>
-					<th>Fee To Pay</th>
-														
+					<th>Biaya yang Harus Dibayar</th>
+					<!-- <th>Dibayar</th>
+					<th>Kurang</th>	 -->													
 		</tr>
 		</thead>
 		<tbody>
@@ -22,7 +23,7 @@
 		if($mycriteria=='paid'){
 		$query2 = mysqli_query($conn,"select * from students,".$myperiod." where students.class ='$myclass' AND ".$myperiod.".student_id = students.student_id AND ".$myperiod.".fee != '0'")or die(mysqli_error());
 		while($row2= mysqli_fetch_array($query2)){
-		$student_name = $row2['firstname'].' '.$row2['middlename'].' '.$row2['lastname'];
+		$student_name = $row2['name'];
 		$stud_id =$row2['student_id'];
 		$status =$row2['status']; 
 		$myclass2 =$row2['class'];
@@ -31,16 +32,16 @@
 		while($row3= mysqli_fetch_array($query3)){
 		$fee = $row3['fee'];
 		}		
-		if($status=='paying'){
+		if($status=='Full'){
 			$status_fee =$fee;
 		}else
-		if($status=='exempted'){
+		if($status=='Gratis'){
 			$status_fee =0;
 		}else
-		if($status=='half'){
+		if($status=='Setengah'){
 			$status_fee =$fee/2;
 		}else
-		if($status=='quarter'){
+		if($status=='Seperempat'){
 			$status_fee =$fee/4;
 		
 		}?>
@@ -60,7 +61,7 @@
 		if($mycriteria=='not_paid'){
 		$query2 = mysqli_query($conn,"select * from students,".$myperiod." where students.class ='$myclass' AND ".$myperiod.".student_id = students.student_id  AND ".$myperiod.".fee = '0'")or die(mysqli_error());
 		while($row2= mysqli_fetch_array($query2)){
-		$student_name = $row2['firstname'].' '.$row2['middlename'].' '.$row2['lastname'];
+		$student_name = $row2['name'];
 		$stud_id =$row2['student_id'];
 		$status =$row2['status']; 
 		$myclass2 =$row2['class'];
@@ -69,16 +70,16 @@
 		while($row3= mysqli_fetch_array($query3)){
 		$fee = $row3['fee'];
 		}		
-		if($status=='paying'){
+		if($status=='Full'){
 			$status_fee =$fee;
 		}else
-		if($status=='exempted'){
+		if($status=='Gratis'){
 			$status_fee =0;
 		}else
-		if($status=='half'){
+		if($status=='Setengah'){
 			$status_fee =$fee/2;
 		}else
-		if($status=='quarter'){
+		if($status=='Seperempat'){
 			$status_fee =$fee/4;
 		
 		}?>

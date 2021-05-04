@@ -50,8 +50,8 @@ include('header.php'); ?>
 										  <label>Criteria</label>
 										  <select name="criteria" onchange="document.myform.formVar.value=this.value" required>
 												<option></option>
-												<option value ="paid">Paid </option>
-												<option value ="not_paid">Not Paid</option>
+												<option value ="paid">Lunas </option>
+												<option value ="not_paid">Belum </option>
 
 											</select>
                                             
@@ -62,9 +62,7 @@ include('header.php'); ?>
 										
 											<div class="control-group">
                                           <div class="controls">
-												<button  data-placement="right" title="Click to Search" id="search" name="search" class="btn btn-inverse"><i class="icon-search icon-large"></i> Search</button>
-												
-												
+												<button  data-placement="right" title="Click untuk Mencari" id="search" name="search" class="btn btn-inverse"><i class="icon-search icon-large"></i> Cari</button>												
                                           </div>
                                         </div>
 			</form>

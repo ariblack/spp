@@ -26,8 +26,8 @@
                             <div class="block-content collapse in">
 							        <div class="span12">
 						
-									<?php 
-								$query_students = mysqli_query($conn,"select * from students  ")or die(mysqli_error());
+								<?php 
+								$query_students = mysqli_query($conn,"select * from students")or die(mysqli_error());
 								$count_students = mysqli_num_rows($query_students);
 								?>
 								
@@ -50,49 +50,9 @@
 
                                     </div>
                                 </div>
-								<?php 
-																
-								$query_nursery = mysqli_query($conn," select * from students, class where students.class = class.class_name AND class.category ='Nursery'")or die(mysqli_error());
-								
-								$count_nursery = mysqli_num_rows($query_nursery);
-								
-								?>
-								
-                                <div class="span3">
-                                    <div class="chart" data-percent="<?php echo $count_nursery; ?>"><?php echo $count_nursery; ?></div>
-                                    <div class="chart-bottom-heading"><strong>NURSERY STUDENTS</strong>
-
-                                    </div>
-                                </div>
 								
 								<?php 
-								$query_primary = mysqli_query($conn," select * from students, class where students.class = class.class_name AND class.category ='Primary'")or die(mysqli_error());
-								$count_primary = mysqli_num_rows($query_primary);
-								?>
-								
-                                <div class="span3">
-                                    <div class="chart" data-percent="<?php echo $count_primary; ?>"><?php echo $count_primary; ?></div>
-                                    <div class="chart-bottom-heading"><strong>PRIMARY STUDENTS</strong>
-
-                                    </div>
-                                </div>
-								
-								
-										<?php 
-								$query_secondary = mysqli_query($conn," select * from students, class where students.class = class.class_name AND class.category ='Secondary'")or die(mysqli_error());
-								$count_secondary = mysqli_num_rows($query_secondary);
-								?>
-								
-                                <div class="span3">
-                                    <div class="chart" data-percent="<?php echo $count_secondary ?>"><?php echo $count_secondary ?></div>
-                                    <div class="chart-bottom-heading"><strong>SECONDARY STUDENTS</strong>
-
-                                    </div>
-                                </div>
-								
-								
-										<?php 
-								$query_admin = mysqli_query($conn," select * from users where status='administrator' ")or die(mysqli_error());
+								$query_admin = mysqli_query($conn," select * from users where status='Administrator' ")or die(mysqli_error());
 								$count_admin = mysqli_num_rows($query_admin);
 								?>
 								
@@ -103,8 +63,8 @@
                                     </div>
                                 </div>
 								
-										<?php 
-								$query_normal = mysqli_query($conn," select * from users where status='normal'")or die(mysqli_error());
+								<?php 
+								$query_normal = mysqli_query($conn," select * from users where status='Normal'")or die(mysqli_error());
 								$count_normal = mysqli_num_rows($query_normal);
 								?>
 								
