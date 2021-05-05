@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Bulan Mei 2021 pada 07.14
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 5.6.40
+-- Waktu pembuatan: 05 Bulan Mei 2021 pada 11.40
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -65,7 +64,13 @@ INSERT INTO `activity_log` (`activity_log_id`, `username`, `date`, `action`) VAL
 (22, 'noel.titus', '2021-05-03 11:57:21', 'Edit Kelas X MM'),
 (23, 'noel.titus', '2021-05-03 12:05:38', 'Edit Kelas X MM'),
 (24, 'noel.titus', '2021-05-03 12:05:51', 'Edit Kelas X MM'),
-(25, 'noel.titus', '2021-05-03 12:06:03', 'Menghapus Kelas X MM');
+(25, 'noel.titus', '2021-05-03 12:06:03', 'Menghapus Kelas X MM'),
+(26, 'noel.titus', '2021-05-05 16:13:31', 'Edit Siswa aaa'),
+(27, 'noel.titus', '2021-05-05 16:14:11', 'Edit Siswa aaa'),
+(28, 'noel.titus', '2021-05-05 16:29:27', 'Menghapus Siswa '),
+(29, 'noel.titus', '2021-05-05 16:30:27', 'Tambah Siswa dsadasdasas'),
+(30, 'noel.titus', '2021-05-05 16:30:28', 'Tambah Siswa dsadasdasas'),
+(31, 'noel.titus', '2021-05-05 16:30:39', 'Menghapus Siswa ');
 
 -- --------------------------------------------------------
 
@@ -91,9 +96,38 @@ CREATE TABLE `aprjun` (
 INSERT INTO `aprjun` (`aprjun_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'Setengah', 125000, 0),
 (2, 2, 'Form 6', 250000, 'Full', 250000, 250000),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
-(4, 4, 'Form 6', 250000, 'Full', 250000, 0),
-(5, 5, 'Form 6', 250000, 'Gratis', 0, 0);
+(4, 4, 'Form 6', 250000, 'Full', 250000, 250000),
+(6, 6, 'Form 6', 250000, 'Setengah', 125000, 125000),
+(7, 7, 'Form 6', 250000, 'Setengah', 125000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `biaya_siswa`
+--
+
+DROP TABLE IF EXISTS `biaya_siswa`;
+CREATE TABLE `biaya_siswa` (
+  `biaya_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `class` varchar(25) NOT NULL,
+  `class_fee` int(11) NOT NULL,
+  `status` varchar(25) NOT NULL,
+  `status_fee` int(11) NOT NULL,
+  `spp` int(11) NOT NULL,
+  `pot_spp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `biaya_siswa`
+--
+
+INSERT INTO `biaya_siswa` (`biaya_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `spp`, `pot_spp`) VALUES
+(1, 1, 'Form 6', 250000, 'Setengah', 125000, 125000, 0),
+(2, 2, 'Form 6', 250000, 'Full', 250000, 250000, 0),
+(4, 4, 'Form 6', 250000, 'Full', 250000, 250000, 0),
+(6, 6, 'Form 6', 250000, 'Setengah', 125000, 125000, 0),
+(7, 7, 'Form 6', 250000, 'Setengah', 125000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -120,6 +154,42 @@ INSERT INTO `class` (`class_id`, `class_name`, `fee`, `spp`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `fee_made`
+--
+
+DROP TABLE IF EXISTS `fee_made`;
+CREATE TABLE `fee_made` (
+  `pay_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `period` varchar(30) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `date_of_payment` date NOT NULL,
+  `receipt` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `fee_made`
+--
+
+INSERT INTO `fee_made` (`pay_id`, `student_id`, `period`, `amount`, `date_of_payment`, `receipt`) VALUES
+(1, 2, 'janmar', 250000, '2016-10-24', 23444),
+(2, 2, 'aprjun', 250000, '2016-10-24', 90909887),
+(3, 1, 'janmar', 125000, '2021-05-05', 1),
+(4, 2, 'julsep', 250000, '2021-05-05', 15),
+(5, 2, 'octdec', 250000, '2021-05-05', 555),
+(6, 4, 'julsep', 250000, '2021-05-05', 55),
+(7, 4, 'janmar', 250000, '2021-05-05', 25556),
+(8, 4, 'julsep', 250000, '2021-05-05', 15),
+(9, 4, 'aprjun', 250000, '2021-05-05', 55555),
+(10, 4, 'octdec', 250000, '2021-05-05', 4),
+(11, 6, 'janmar', 125000, '2021-05-05', 56556565),
+(12, 6, 'aprjun', 125000, '2021-05-05', 2147483647),
+(13, 6, 'julsep', 125000, '2021-05-05', 5465645),
+(14, 6, 'octdec', 125000, '2021-05-05', 65645);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `janmar`
 --
 
@@ -139,11 +209,11 @@ CREATE TABLE `janmar` (
 --
 
 INSERT INTO `janmar` (`janmar_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
-(1, 1, 'Form 6', 250000, 'Setengah', 125000, 0),
+(1, 1, 'Form 6', 250000, 'Setengah', 125000, 125000),
 (2, 2, 'Form 6', 250000, 'Full', 250000, 250000),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
-(4, 4, 'Form 6', 250000, 'Full', 250000, 0),
-(5, 5, 'Form 6', 250000, 'Gratis', 0, 0);
+(4, 4, 'Form 6', 250000, 'Full', 250000, 250000),
+(6, 6, 'Form 6', 250000, 'Setengah', 125000, 125000),
+(7, 7, 'Form 6', 250000, 'Setengah', 125000, 0);
 
 -- --------------------------------------------------------
 
@@ -168,10 +238,10 @@ CREATE TABLE `julsep` (
 
 INSERT INTO `julsep` (`julsep_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'Setengah', 125000, 0),
-(2, 2, 'Form 6', 250000, 'Full', 250000, 0),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
-(4, 4, 'Form 6', 250000, 'Full', 250000, 0),
-(5, 5, 'Form 6', 250000, 'Gratis', 0, 0);
+(2, 2, 'Form 6', 250000, 'Full', 250000, 250000),
+(4, 4, 'Form 6', 250000, 'Full', 250000, 250000),
+(6, 6, 'Form 6', 250000, 'Setengah', 125000, 125000),
+(7, 7, 'Form 6', 250000, 'Setengah', 125000, 0);
 
 -- --------------------------------------------------------
 
@@ -196,10 +266,10 @@ CREATE TABLE `octdec` (
 
 INSERT INTO `octdec` (`octdec_id`, `student_id`, `class`, `class_fee`, `status`, `status_fee`, `fee`) VALUES
 (1, 1, 'Form 6', 250000, 'Setengah', 125000, 0),
-(2, 2, 'Form 6', 250000, 'Full', 250000, 0),
-(3, 3, 'Form 6', 250000, 'paying', 250000, 0),
-(4, 4, 'Form 6', 250000, 'Full', 250000, 0),
-(5, 5, 'Form 6', 250000, 'Gratis', 0, 0);
+(2, 2, 'Form 6', 250000, 'Full', 250000, 250000),
+(4, 4, 'Form 6', 250000, 'Full', 250000, 250000),
+(6, 6, 'Form 6', 250000, 'Setengah', 125000, 125000),
+(7, 7, 'Form 6', 250000, 'Setengah', 125000, 0);
 
 -- --------------------------------------------------------
 
@@ -223,7 +293,19 @@ CREATE TABLE `payment_made` (
 
 INSERT INTO `payment_made` (`pay_id`, `student_id`, `period`, `amount`, `date_of_payment`, `receipt`) VALUES
 (1, 2, 'janmar', 250000, '2016-10-24', 23444),
-(2, 2, 'aprjun', 250000, '2016-10-24', 90909887);
+(2, 2, 'aprjun', 250000, '2016-10-24', 90909887),
+(3, 1, 'janmar', 125000, '2021-05-05', 1),
+(4, 2, 'julsep', 250000, '2021-05-05', 15),
+(5, 2, 'octdec', 250000, '2021-05-05', 555),
+(6, 4, 'julsep', 250000, '2021-05-05', 55),
+(7, 4, 'janmar', 250000, '2021-05-05', 25556),
+(8, 4, 'julsep', 250000, '2021-05-05', 15),
+(9, 4, 'aprjun', 250000, '2021-05-05', 55555),
+(10, 4, 'octdec', 250000, '2021-05-05', 4),
+(11, 6, 'janmar', 125000, '2021-05-05', 56556565),
+(12, 6, 'aprjun', 125000, '2021-05-05', 2147483647),
+(13, 6, 'julsep', 125000, '2021-05-05', 5465645),
+(14, 6, 'octdec', 125000, '2021-05-05', 65645);
 
 -- --------------------------------------------------------
 
@@ -252,9 +334,9 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `name`, `gender`, `pob`, `dob`, `address`, `class`, `fathername`, `mothername`, `guardianname`, `tel`, `status`) VALUES
-(1, 'aaa', 'Laki-laki', 'Surabaya', '2016-10-25', 'bububu', 'Form 6', 'oplkk', 'jjj', 'rfrf', '0789554433', 'Setengah'),
 (2, 'buel', 'Perempuan', 'Surabaya', '2016-10-26', 'stonetown', 'Form 6', 'bun', 'bol', 'buel', '0717884452', 'Full'),
-(4, 'Ariono', 'Laki-laki', 'SURABAYA', '2010-02-14', 'KAPASMADYA			', 'Form 6', 'SUPRI', 'ATUN', '', '0878596676', 'Full');
+(4, 'Ariono', 'Laki-laki', 'SURABAYA', '2010-02-14', 'KAPASMADYA			', 'Form 6', 'SUPRI', 'ATUN', '', '0878596676', 'Full'),
+(6, 'dsadasdasas', 'Laki-laki', 'sdsds', '2004-03-25', 'csdas', 'Form 6', 'sdsds', 'ssas', 'ssds', '0232323', 'Setengah');
 
 -- --------------------------------------------------------
 
@@ -300,14 +382,14 @@ CREATE TABLE `user_log` (
 --
 
 INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, `user_id`) VALUES
-(1, 'noel.titus', '2016-10-24 09:10:07', '2021-04-24 15:48:17', 3),
-(2, 'noel.titus', '2016-10-24 09:11:10', '2021-04-24 15:48:17', 3),
-(3, 'noel.titus', '2016-10-24 09:23:04', '2021-04-24 15:48:17', 3),
+(1, 'noel.titus', '2016-10-24 09:10:07', '2021-05-05 16:33:48', 3),
+(2, 'noel.titus', '2016-10-24 09:11:10', '2021-05-05 16:33:48', 3),
+(3, 'noel.titus', '2016-10-24 09:23:04', '2021-05-05 16:33:48', 3),
 (4, 'abdul.hemedy', '2016-10-24 09:23:30', '2016-10-24 09:36:55', 4),
-(5, 'noel.titus', '2021-04-22 09:16:48', '2021-04-24 15:48:17', 3),
-(6, 'noel.titus', '2021-04-23 15:33:24', '2021-04-24 15:48:17', 3),
-(7, 'noel.titus', '2021-04-24 13:40:33', '2021-04-24 15:48:17', 3),
-(8, 'noel.titus', '2021-05-03 10:44:52', '', 3);
+(5, 'noel.titus', '2021-04-22 09:16:48', '2021-05-05 16:33:48', 3),
+(6, 'noel.titus', '2021-04-23 15:33:24', '2021-05-05 16:33:48', 3),
+(7, 'noel.titus', '2021-04-24 13:40:33', '2021-05-05 16:33:48', 3),
+(8, 'noel.titus', '2021-05-03 10:44:52', '2021-05-05 16:33:48', 3);
 
 --
 -- Indexes for dumped tables
@@ -326,10 +408,22 @@ ALTER TABLE `aprjun`
   ADD PRIMARY KEY (`aprjun_id`);
 
 --
+-- Indeks untuk tabel `biaya_siswa`
+--
+ALTER TABLE `biaya_siswa`
+  ADD PRIMARY KEY (`biaya_id`);
+
+--
 -- Indeks untuk tabel `class`
 --
 ALTER TABLE `class`
   ADD PRIMARY KEY (`class_id`);
+
+--
+-- Indeks untuk tabel `fee_made`
+--
+ALTER TABLE `fee_made`
+  ADD PRIMARY KEY (`pay_id`);
 
 --
 -- Indeks untuk tabel `janmar`
@@ -382,13 +476,19 @@ ALTER TABLE `user_log`
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `aprjun`
 --
 ALTER TABLE `aprjun`
-  MODIFY `aprjun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `aprjun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `biaya_siswa`
+--
+ALTER TABLE `biaya_siswa`
+  MODIFY `biaya_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `class`
@@ -397,34 +497,40 @@ ALTER TABLE `class`
   MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT untuk tabel `fee_made`
+--
+ALTER TABLE `fee_made`
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT untuk tabel `janmar`
 --
 ALTER TABLE `janmar`
-  MODIFY `janmar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `janmar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `julsep`
 --
 ALTER TABLE `julsep`
-  MODIFY `julsep_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `julsep_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `octdec`
 --
 ALTER TABLE `octdec`
-  MODIFY `octdec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `octdec_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `payment_made`
 --
 ALTER TABLE `payment_made`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
