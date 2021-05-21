@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Bulan Mei 2021 pada 11.40
+-- Waktu pembuatan: 21 Bulan Mei 2021 pada 11.26
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -103,6 +103,33 @@ INSERT INTO `aprjun` (`aprjun_id`, `student_id`, `class`, `class_fee`, `status`,
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `bantuan`
+--
+
+DROP TABLE IF EXISTS `bantuan`;
+CREATE TABLE `bantuan` (
+  `id_bantuan` int(11) NOT NULL,
+  `nama_bantuan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bantuan_siswa`
+--
+
+DROP TABLE IF EXISTS `bantuan_siswa`;
+CREATE TABLE `bantuan_siswa` (
+  `id_bantuan_siwa` int(11) NOT NULL,
+  `id_dtl_bantuan` int(11) NOT NULL,
+  `class_stud_id` int(11) NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `biaya_siswa`
 --
 
@@ -150,6 +177,20 @@ CREATE TABLE `class` (
 INSERT INTO `class` (`class_id`, `class_name`, `fee`, `spp`) VALUES
 (1, 'Form 6', 250000, 0),
 (3, 'X APH', 1250000, 150000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `dtl_bantuan`
+--
+
+DROP TABLE IF EXISTS `dtl_bantuan`;
+CREATE TABLE `dtl_bantuan` (
+  `id_dtl_bantuan` int(11) NOT NULL,
+  `id_bantuan` int(11) NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -389,7 +430,8 @@ INSERT INTO `user_log` (`user_log_id`, `username`, `login_date`, `logout_date`, 
 (5, 'noel.titus', '2021-04-22 09:16:48', '2021-05-05 16:33:48', 3),
 (6, 'noel.titus', '2021-04-23 15:33:24', '2021-05-05 16:33:48', 3),
 (7, 'noel.titus', '2021-04-24 13:40:33', '2021-05-05 16:33:48', 3),
-(8, 'noel.titus', '2021-05-03 10:44:52', '2021-05-05 16:33:48', 3);
+(8, 'noel.titus', '2021-05-03 10:44:52', '2021-05-05 16:33:48', 3),
+(9, 'noel.titus', '2021-05-21 16:07:52', '', 3);
 
 --
 -- Indexes for dumped tables
@@ -408,6 +450,20 @@ ALTER TABLE `aprjun`
   ADD PRIMARY KEY (`aprjun_id`);
 
 --
+-- Indeks untuk tabel `bantuan`
+--
+ALTER TABLE `bantuan`
+  ADD PRIMARY KEY (`id_bantuan`);
+
+--
+-- Indeks untuk tabel `bantuan_siswa`
+--
+ALTER TABLE `bantuan_siswa`
+  ADD PRIMARY KEY (`id_bantuan_siwa`),
+  ADD KEY `bantuan_siswa` (`id_dtl_bantuan`),
+  ADD KEY `class_stud_idx` (`class_stud_id`);
+
+--
 -- Indeks untuk tabel `biaya_siswa`
 --
 ALTER TABLE `biaya_siswa`
@@ -418,6 +474,13 @@ ALTER TABLE `biaya_siswa`
 --
 ALTER TABLE `class`
   ADD PRIMARY KEY (`class_id`);
+
+--
+-- Indeks untuk tabel `dtl_bantuan`
+--
+ALTER TABLE `dtl_bantuan`
+  ADD PRIMARY KEY (`id_dtl_bantuan`),
+  ADD KEY `dtl_bantuan` (`id_bantuan`);
 
 --
 -- Indeks untuk tabel `fee_made`
@@ -485,6 +548,18 @@ ALTER TABLE `aprjun`
   MODIFY `aprjun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT untuk tabel `bantuan`
+--
+ALTER TABLE `bantuan`
+  MODIFY `id_bantuan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `bantuan_siswa`
+--
+ALTER TABLE `bantuan_siswa`
+  MODIFY `id_bantuan_siwa` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `biaya_siswa`
 --
 ALTER TABLE `biaya_siswa`
@@ -495,6 +570,12 @@ ALTER TABLE `biaya_siswa`
 --
 ALTER TABLE `class`
   MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `dtl_bantuan`
+--
+ALTER TABLE `dtl_bantuan`
+  MODIFY `id_dtl_bantuan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `fee_made`
@@ -542,7 +623,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
